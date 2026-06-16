@@ -3,7 +3,7 @@ import glob, os, re
 os.chdir(r'E:\himros web')
 
 # Files that still have barUp keyframes or .leaving .bar rules
-files = ['about.html', 'awards.html', 'blog.html', 'contact.html', 'homepage.html', 'products.html', 'segment.html']
+files = ['about.html', 'awards.html', 'blog.html', 'contact.html', 'index.html', 'products.html', 'segment.html']
 
 for f in files:
     with open(f, 'r', encoding='utf-8') as fh:
