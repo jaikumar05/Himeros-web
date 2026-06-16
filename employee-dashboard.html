@@ -41,7 +41,7 @@
     </style>
 </head>
 <body class="text-gray-800 min-h-screen flex flex-col">
-    <script>if(localStorage.getItem("loggedIn")==="true"){document.documentElement.setAttribute("data-auth","in")}else{document.documentElement.setAttribute("data-auth","out")}</script>
+    <script>if(sessionStorage.getItem("loggedIn")==="true"){document.documentElement.setAttribute("data-auth","in")}else{document.documentElement.setAttribute("data-auth","out")}</script>
     <div class="page-transition-overlay" id="pageTransition"></div>
 
     <!-- Navigation -->
@@ -580,11 +580,11 @@
 
     <script>
         // Check login
-        if (localStorage.getItem('loggedIn') !== 'true') {
+        if (sessionStorage.getItem('loggedIn') !== 'true') {
             window.location.href = 'login.html';
         }
 
-        var empName = localStorage.getItem('empName') || 'Employee';
+        var empName = sessionStorage.getItem('empName') || 'Employee';
         document.getElementById('empNameDisplay').textContent = 'Welcome, ' + empName;
         var empNav = document.getElementById('empNavName');
         if (empNav) empNav.textContent = empName;
@@ -602,8 +602,8 @@
 
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', function() {
-            localStorage.removeItem('loggedIn');
-            localStorage.removeItem('empName');
+            sessionStorage.removeItem('loggedIn');
+            sessionStorage.removeItem('empName');
             window.location.href = 'index.html';
         });
 

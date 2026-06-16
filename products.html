@@ -96,7 +96,7 @@
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <script>if(localStorage.getItem("loggedIn")==="true"){document.documentElement.setAttribute("data-auth","in")}else{document.documentElement.setAttribute("data-auth","out")}</script>
+    <script>if(sessionStorage.getItem("loggedIn")==="true"){document.documentElement.setAttribute("data-auth","in")}else{document.documentElement.setAttribute("data-auth","out")}</script>
     <!-- Page Transition Overlay -->
         <div class="page-transition-overlay" id="pageTransition"></div>
 
@@ -387,7 +387,7 @@
         (function() {
             // Set employee name in nav when logged in
             if (document.documentElement.getAttribute("data-auth") === "in") {
-                var empId = localStorage.getItem("empName") || "EMP001";
+                var empId = sessionStorage.getItem("empName") || "EMP001";
                 var eid = document.getElementById("empNavId");
                 var meid = document.getElementById("mobileEmpId");
                 if (eid) eid.textContent = empId;
@@ -402,8 +402,8 @@
             } catch(e) {}
             try {
                 function doLogout() {
-                    localStorage.removeItem("loggedIn");
-                    localStorage.removeItem("empName");
+                    sessionStorage.removeItem("loggedIn");
+                    sessionStorage.removeItem("empName");
                     window.location.reload();
                 }
                 var loBtn = document.getElementById("logoutBtn");

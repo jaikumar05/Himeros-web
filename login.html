@@ -48,7 +48,7 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
-    <script>if(localStorage.getItem("loggedIn")==="true"){document.documentElement.setAttribute("data-auth","in")}else{document.documentElement.setAttribute("data-auth","out")}</script>
+    <script>if(sessionStorage.getItem("loggedIn")==="true"){document.documentElement.setAttribute("data-auth","in")}else{document.documentElement.setAttribute("data-auth","out")}</script>
     <div class="page-transition-overlay" id="pageTransition"></div>
 
     <!-- Navigation -->
@@ -193,8 +193,8 @@
             var empId = document.getElementById('empId').value.trim();
             var password = document.getElementById('password').value.trim();
             if (empId === 'EMP001' && password === 'himros@123') {
-                localStorage.setItem('loggedIn', 'true');
-                localStorage.setItem('empName', 'Employee 001');
+                sessionStorage.setItem('loggedIn', 'true');
+                sessionStorage.setItem('empName', 'Employee 001');
                 window.location.href = 'index.html';
             } else {
                 document.getElementById('loginError').textContent = 'Invalid Employee ID or Password. Please try again.';
@@ -208,7 +208,7 @@
         (function() {
             // Set employee name in nav when logged in
             if (document.documentElement.getAttribute("data-auth") === "in") {
-                var empId = localStorage.getItem("empName") || "EMP001";
+                var empId = sessionStorage.getItem("empName") || "EMP001";
                 var eid = document.getElementById("empNavId");
                 var meid = document.getElementById("mobileEmpId");
                 if (eid) eid.textContent = empId;
@@ -223,8 +223,8 @@
             } catch(e) {}
             try {
                 function doLogout() {
-                    localStorage.removeItem("loggedIn");
-                    localStorage.removeItem("empName");
+                    sessionStorage.removeItem("loggedIn");
+                    sessionStorage.removeItem("empName");
                     window.location.reload();
                 }
                 var loBtn = document.getElementById("logoutBtn");
