@@ -279,7 +279,7 @@
                 function doLogout() {
                     sessionStorage.removeItem("loggedIn");
                     sessionStorage.removeItem("empName");
-                    window.location.reload();
+                    window.location.href = 'index.html';
                 }
                 var loBtn = document.getElementById("logoutBtn");
                 var mLoBtn = document.getElementById("mobileLogoutBtn");

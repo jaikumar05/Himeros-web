@@ -196,7 +196,7 @@
                 sessionStorage.setItem('loggedIn', 'true');
                 sessionStorage.setItem('empName', 'Employee 001');
                 sessionStorage.setItem('empId', empId);
-                window.location.href = 'index.html';
+                window.location.href = 'employee-dashboard.html';
             } else {
                 document.getElementById('loginError').textContent = 'Invalid Employee ID or Password. Please try again.';
                 document.getElementById('loginError').classList.remove('hidden');
@@ -226,7 +226,7 @@
                 function doLogout() {
                     sessionStorage.removeItem("loggedIn");
                     sessionStorage.removeItem("empName");
-                    window.location.reload();
+                    window.location.href = 'index.html';
                 }
                 var loBtn = document.getElementById("logoutBtn");
                 var mLoBtn = document.getElementById("mobileLogoutBtn");
