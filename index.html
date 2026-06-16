@@ -1,0 +1,1438 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himeros Pharma Ltd.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 800: '#1e3a8a', 900: '#172554' },
+                        green: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'], 'playfair': ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Auth visibility */
+        #empDropdownWrap{display:none!important}[data-auth="in"] #empDropdownWrap{display:inline-block!important}@media(max-width:767px){[data-auth="in"] #empDropdownWrap{display:none!important}}[data-auth="in"] #loginBtn{display:none!important}[data-auth="in"] #mobileLoginBtn{display:none!important}#mobileLoggedIn{display:none!important}[data-auth="in"] #mobileLoggedIn{display:block!important}
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #93c5fd;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        .counter-value {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slide .slide-bg {
+            position: absolute;
+            inset: -20px;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.0);
+            transition: transform 8s ease-out;
+        }
+
+        .hero-slide.active .slide-bg {
+            transform: scale(1.08);
+        }
+
+        .hero-slide .slide-overlay {
+            position: absolute;
+            inset: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .hero-slide .slide-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-slide .slide-badge,
+        .hero-slide .slide-title,
+        .hero-slide .slide-desc,
+        .hero-slide .slide-buttons {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .hero-slide .slide-badge {
+            transition-delay: 0.3s;
+        }
+
+        .hero-slide .slide-title {
+            transition-delay: 0.5s;
+        }
+
+        .hero-slide .slide-desc {
+            transition-delay: 0.7s;
+        }
+
+        .hero-slide .slide-buttons {
+            transition-delay: 0.9s;
+        }
+
+        .hero-slide.active .slide-badge,
+        .hero-slide.active .slide-title,
+        .hero-slide.active .slide-desc,
+        .hero-slide.active .slide-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-dot {
+            transition: all 0.4s ease;
+        }
+
+        .slide-dot.active {
+            background-color: #22c55e !important;
+            width: 3rem;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #22c55e;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .segment-card {
+            transition: all 0.4s ease;
+        }
+
+        .segment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+        }
+
+        .segment-card:hover .segment-img img {
+            transform: scale(1.08);
+        }
+
+        .segment-card .segment-img img {
+            transition: transform 0.6s ease;
+        }
+
+        .segment-card:hover .segment-btn {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        .footer-logo-wrap {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.6rem;
+            display: inline-flex;
+        }
+
+        .award-card {
+            transition: all 0.4s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+        }
+
+        .award-card:hover .award-photo img {
+            transform: scale(1.05);
+        }
+
+        .award-photo img {
+            transition: transform 0.5s ease;
+        }
+
+        /* Page Transition */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            background: #ffffff;
+            opacity: 1;
+            animation: overlayFadeOut 0.4s ease 0.2s forwards;
+        }
+        
+        @keyframes overlayFadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        body > *:not(.page-transition-overlay):not(nav):not(#mobileMenu):not(#menuOverlay) {
+            animation: contentFadeIn 0.5s ease 0.3s both;
+        }
+        
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+    <script>if(localStorage.getItem('loggedIn')==='true'){document.documentElement.setAttribute('data-auth','in')}else{document.documentElement.setAttribute('data-auth','out')}</script>
+    <!-- Page Transition Overlay -->
+        <div class="page-transition-overlay" id="pageTransition"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="#" class="flex items-center flex-shrink-0">
+                    <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23"
+                        alt="Himeros Pharma Logo" class="h-11 lg:h-[52px] w-auto object-contain">
+                </a>
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="homepage.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Home</a>
+                    <a href="about.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">About
+                        Us</a>
+                    <a href="segment.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Segment</a>
+                    <a href="products.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Products</a>
+                    <a href="awards.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Awards</a>
+                    <a href="blog.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Blog</a>
+                    <a href="contact.html"
+                        class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Contact
+                        Us</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="login.html" id="loginBtn"
+                        class="hidden md:inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 text-sm font-medium px-5 py-2 rounded-full hover:bg-brand-600 hover:text-white transition-all duration-300"><i
+                            data-lucide="user" class="w-4 h-4"></i> Login / Sign Up</a>
+                    <div id="empDropdownWrap" class="hidden relative">
+                        <button id="empDropdownBtn" onclick="var m=document.getElementById('empDropdownMenu');if(m)m.classList.toggle('hidden');event.stopPropagation();" class="inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 text-sm font-medium px-5 py-2 rounded-full hover:bg-brand-600 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="user" class="w-4 h-4 flex-shrink-0"></i>
+                            <span id="empNavId" class="truncate max-w-[120px]">EMP001</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 flex-shrink-0"></i>
+                        </button>
+                        <div id="empDropdownMenu" class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 hidden">
+                            <a href="employee-dashboard.html" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors"><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Employee Dashboard</a>
+                            <hr class="my-1 border-gray-100">
+                            <button id="logoutBtn" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors w-full text-left"><i data-lucide="log-out" class="w-4 h-4"></i> Logout</button>
+                        </div>
+                    </div>
+                    <button id="menuToggle"
+                        class="lg:hidden p-2 text-gray-600 hover:text-brand-600 transition-colors"><i data-lucide="menu"
+                            class="w-6 h-6"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23"
+                    alt="Himeros Pharma Logo" class="h-9 w-auto object-contain">
+                <button id="menuClose" class="p-2 text-gray-400 hover:text-gray-600"><i data-lucide="x"
+                        class="w-6 h-6"></i></button>
+            </div>
+            <div class="flex flex-col gap-1">
+                <a href="homepage.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Home</a>
+                <a href="about.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">About
+                    Us</a>
+                <a href="segment.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Segment</a>
+                <a href="products.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Products</a>
+                <a href="awards.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Awards</a>
+                <a href="blog.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Blog</a>
+                <a href="contact.html"
+                    class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Contact
+                    Us</a>
+            </div>
+            <div class="mt-8" id="mobileAuthSection">
+                    <a href="login.html" id="mobileLoginBtn" class="flex items-center justify-center gap-2 w-full border-2 border-brand-600 text-brand-600 font-medium px-6 py-3 rounded-full hover:bg-brand-600 hover:text-white transition-all"><i data-lucide="user" class="w-4 h-4"></i> Login / Sign Up</a>
+                    <div id="mobileLoggedIn" class="hidden space-y-3">
+                        <div class="text-center text-sm text-gray-500">Logged in as <span class="text-gray-700 font-medium" id="mobileEmpId">EMP001</span></div>
+                        <a href="employee-dashboard.html" class="flex items-center justify-center gap-2 w-full border-2 border-brand-600 text-brand-600 font-medium px-6 py-3 rounded-full hover:bg-brand-600 hover:text-white transition-all"><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Employee Dashboard</a>
+                        <button id="mobileLogoutBtn" class="flex items-center justify-center gap-2 w-full border-2 border-red-400 text-red-600 font-medium px-6 py-3 rounded-full hover:bg-red-500 hover:text-white transition-all"><i data-lucide="log-out" class="w-4 h-4"></i> Logout</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <!-- HERO SLIDER -->
+    <section id="home" class="hero-slider">
+        <div class="hero-slide active" data-index="0">
+            <div class="slide-bg"
+                style="background-image:url('https://picsum.photos/seed/pharma-lab-blue/1920/1080.jpg');"></div>
+            <div class="slide-overlay bg-gradient-to-r from-brand-900/90 via-brand-800/70 to-transparent"></div>
+            <div class="slide-content">
+                <div class="max-w-7xl mx-auto px-4 w-full">
+                    <div class="max-w-2xl">
+                        <div
+                            class="slide-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+                            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span><span
+                                class="text-white/90 text-xs font-medium tracking-wide uppercase">Pioneering Healthcare
+                                Solutions</span>
+                        </div>
+                        <h1
+                            class="slide-title text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                            Committed to <span class="text-green-400">Better Health</span> & Wellness</h1>
+                        <p class="slide-desc text-lg text-white/80 mb-8 leading-relaxed">Himeros Pharma Ltd. is a
+                            research-driven pharmaceutical company dedicated to improving lives through innovative
+                            therapeutic solutions across Gynecology, Infertility, and Respiratory care.</p>
+                        <div class="slide-buttons flex flex-wrap gap-4"><a href="about.html"
+                                class="inline-flex items-center gap-2 bg-white text-brand-700 font-semibold px-8 py-3.5 rounded-full hover:bg-green-50 hover:text-green-700 transition-all duration-300 shadow-lg">Discover
+                                More <i data-lucide="arrow-right" class="w-4 h-4"></i></a><a href="products.html"
+                                class="inline-flex items-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 hover:border-white transition-all duration-300">Our
+                                Products</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide" data-index="1">
+            <div class="slide-bg"
+                style="background-image:url('https://picsum.photos/seed/medical-research/1920/1080.jpg');"></div>
+            <div class="slide-overlay bg-gradient-to-r from-green-900/90 via-green-800/70 to-transparent"></div>
+            <div class="slide-content">
+                <div class="max-w-7xl mx-auto px-4 w-full">
+                    <div class="max-w-2xl">
+                        <div
+                            class="slide-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+                            <span class="w-2 h-2 bg-brand-300 rounded-full pulse-dot"></span><span
+                                class="text-white/90 text-xs font-medium tracking-wide uppercase">Advancing Medical
+                                Science</span>
+                        </div>
+                        <h1
+                            class="slide-title text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                            Innovating for a <span class="text-brand-300">Healthier</span> Tomorrow</h1>
+                        <p class="slide-desc text-lg text-white/80 mb-8 leading-relaxed">Our cutting-edge R&D and
+                            world-class manufacturing ensure that every product meets the highest standards of safety,
+                            efficacy, and quality for patients worldwide.</p>
+                        <div class="slide-buttons flex flex-wrap gap-4"><a href="segment.html"
+                                class="inline-flex items-center gap-2 bg-white text-green-700 font-semibold px-8 py-3.5 rounded-full hover:bg-brand-50 hover:text-brand-700 transition-all duration-300 shadow-lg">Explore
+                                Segments <i data-lucide="arrow-right" class="w-4 h-4"></i></a><a href="about.html"
+                                class="inline-flex items-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 hover:border-white transition-all duration-300">Learn
+                                More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide" data-index="2">
+            <div class="slide-bg"
+                style="background-image:url('https://picsum.photos/seed/healthcare-team/1920/1080.jpg');"></div>
+            <div class="slide-overlay bg-gradient-to-r from-brand-900/90 via-brand-800/60 to-green-900/30"></div>
+            <div class="slide-content">
+                <div class="max-w-7xl mx-auto px-4 w-full">
+                    <div class="max-w-2xl">
+                        <div
+                            class="slide-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+                            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span><span
+                                class="text-white/90 text-xs font-medium tracking-wide uppercase">25+ Years of
+                                Excellence</span>
+                        </div>
+                        <h1
+                            class="slide-title text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                            Your Trusted Partner in <span class="text-green-400">Healthcare</span></h1>
+                        <p class="slide-desc text-lg text-white/80 mb-8 leading-relaxed">With over 25 years of
+                            experience and a presence in 50+ countries, we continue to expand access to quality
+                            healthcare solutions that transform lives every day.</p>
+                        <div class="slide-buttons flex flex-wrap gap-4"><a href="contact.html"
+                                class="inline-flex items-center gap-2 bg-white text-brand-700 font-semibold px-8 py-3.5 rounded-full hover:bg-green-50 hover:text-green-700 transition-all duration-300 shadow-lg">Get
+                                in Touch <i data-lucide="arrow-right" class="w-4 h-4"></i></a><a href="about.html"
+                                class="inline-flex items-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 hover:border-white transition-all duration-300">Learn
+                                More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+            <button class="slide-dot w-8 h-1.5 rounded-full bg-white/40 active" data-slide="0"></button>
+            <button class="slide-dot w-8 h-1.5 rounded-full bg-white/40" data-slide="1"></button>
+            <button class="slide-dot w-8 h-1.5 rounded-full bg-white/40" data-slide="2"></button>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-white/10 z-10">
+            <div id="slideProgress"
+                class="h-full bg-gradient-to-r from-brand-500 to-green-500 transition-all duration-100"
+                style="width:0%;"></div>
+        </div>
+        <div class="absolute bottom-12 right-8 hidden lg:flex flex-col items-center gap-2 text-white/60 z-10"><span
+                class="text-xs tracking-widest uppercase" style="writing-mode:vertical-rl;">Scroll</span>
+            <div class="w-px h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- TEXT BAR -->
+    <section class="py-10 lg:py-14 bg-brand-900 relative">
+        <div class="relative max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-3">
+                        <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0"><i
+                                data-lucide="rocket" class="w-5 h-5 text-green-400"></i></div>
+                        <h4 class="text-lg font-bold text-white">Empowering Future</h4>
+                    </div>
+                    <p class="text-white/80 text-sm leading-relaxed">Enabling healthier lives through continuous care,
+                        innovation, and patient-focused solutions.</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-3">
+                        <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0"><i
+                                data-lucide="shield-check" class="w-5 h-5 text-brand-300"></i></div>
+                        <h4 class="text-lg font-bold text-white">Delivering Confidence</h4>
+                    </div>
+                    <p class="text-white/80 text-sm leading-relaxed">Building trust through reliable quality,
+                        compassionate support, and proven outcomes.</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-3">
+                        <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0"><i
+                                data-lucide="flask-conical" class="w-5 h-5 text-green-400"></i></div>
+                        <h4 class="text-lg font-bold text-white">Driven by Science</h4>
+                    </div>
+                    <p class="text-white/80 text-sm leading-relaxed">Advancing healthcare through research-backed
+                        innovation and evidence-based excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl"><img
+                            src="items/aboutus.jpg" alt="About Himeros Pharma"
+                            class="w-full h-[400px] lg:h-[500px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/40 to-transparent"></div>
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-xl shadow-xl p-5 border border-gray-100 float-animation">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"><i
+                                    data-lucide="award" class="w-6 h-6 text-green-600"></i></div>
+                            <div>
+                                <div class="text-2xl font-bold text-brand-700">WHO-GMP</div>
+                                <div class="text-xs text-gray-500">Certified Facilities</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-brand-200 rounded-2xl -z-10"></div>
+                </div>
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-4">
+                        <div class="w-8 h-0.5 bg-green-500"></div><span
+                            class="text-xs font-semibold text-green-600 uppercase tracking-widest">About Us</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">Driven by Innovation,
+                        <span class="gradient-text">Dedicated to Life</span>
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">Himeros Pharmaceuticals Pvt. Ltd. was
+                        established in 2019 with a vision to contribute to the healthcare and pharmaceutical sector
+                        through quality-focused business solutions and professional excellence. Based in Jaipur,
+                        Rajasthan, the company was founded with the objective of supporting the growing healthcare
+                        ecosystem by delivering reliable and customer-centric pharmaceutical services.</p>
+                    <p class="text-gray-600 leading-relaxed mb-8">At Himeros Pharmaceuticals Pvt. Ltd., we believe that
+                        innovation, integrity, and commitment form the foundation of sustainable growth. Our team
+                        strives to maintain high standards of professionalism while building strong relationships with
+                        partners, healthcare professionals, and stakeholders.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="microscope" class="w-5 h-5 text-brand-600"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Innovation Focused</div>
+                                <div class="text-xs text-gray-500">Continuously exploring new opportunities and business
+                                    solutions.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Integrity & Trust</div>
+                                <div class="text-xs text-gray-500">Building long-term relationships through transparency
+                                    and ethical practices.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="globe" class="w-5 h-5 text-brand-600"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Quality Commitment</div>
+                                <div class="text-xs text-gray-500">Maintaining high standards in every aspect of our
+                                    operations.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="heart-pulse" class="w-5 h-5 text-green-600"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Customer-Centric Approach</div>
+                                <div class="text-xs text-gray-500">Dedicated to understanding and serving the needs of
+                                    our clients and partners.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-green-600 transition-colors group">Learn
+                        More About Us <i data-lucide="arrow-right"
+                            class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Segment Section -->
+    <section id="segment" class="py-20 lg:py-28 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 mb-4 justify-center">
+                    <div class="w-8 h-0.5 bg-brand-500"></div><span
+                        class="text-xs font-semibold text-brand-600 uppercase tracking-widest">Our
+                        Specializations</span>
+                    <div class="w-8 h-0.5 bg-brand-500"></div>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Segments</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Delivering specialized healthcare solutions across key
+                    therapeutic areas to improve quality of life for millions.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="segment-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 group cursor-pointer">
+                    <div class="segment-img relative h-56 overflow-hidden"><img
+                            src="items/andrology.jpg" alt="Andrology"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-5"><span
+                                class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full"><i
+                                    data-lucide="circle-dot" class="w-3 h-3"></i> Men's Health</span></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Andrology</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5">At Himeros Pharma, we recognize that
+                            andrology is more than a medical specialty it is deeply connected to confidence,
+                            relationships, emotional wellbeing, and                             quality of life.</p><a href="segment-andrology.html"
+                            class="segment-btn inline-flex items-center gap-2 bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300">Read
+                            More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div
+                    class="segment-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 group cursor-pointer">
+                    <div class="segment-img relative h-56 overflow-hidden"><img
+                            src="items/sexology.png" alt="Sexology"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-900/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-5"><span
+                                class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full"><i
+                                    data-lucide="heart" class="w-3 h-3"></i> Sexual Health</span></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Sexology</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5">At Himeros Pharma, we are committed to
+                            transforming the field of sexology through science-driven innovation, awareness, and
+                            patient-centered care.</p><a href="segment-sexology.html"
+                            class="segment-btn inline-flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300">Read
+                            More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div
+                    class="segment-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 group cursor-pointer">
+                    <div class="segment-img relative h-56 overflow-hidden"><img
+                            src="items/nephrology.jpg" alt="Nephrology"
+                            class="w-full h-full object-cover">
+                         <div class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-5"><span
+                                class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full"><i
+                                    data-lucide="droplets" class="w-3 h-3"></i> Kidney Care</span></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Nephrology</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5">At Himeros Pharma, we are committed to
+                            strengthening nephrology care through science-backed innovation, patient-focused solutions,
+                            and long-term healthcare responsibility.</p><a href="segment-nephrology.html"
+                            class="segment-btn inline-flex items-center gap-2 bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300">Read
+                            More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div
+                    class="segment-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 group cursor-pointer">
+                    <div class="segment-img relative h-56 overflow-hidden"><img
+                            src="items/gynecology.jpg" alt="Gynecology"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-900/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-5"><span
+                                class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full"><i
+                                    data-lucide="baby" class="w-3 h-3"></i> Women's Health</span></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Gynecology</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5">At Himeros Pharma, we are committed to
+                            advancing women's healthcare through innovative formulations, scientific excellence, and
+                            patient-centered fertility care.</p><a href="segment-gynecology.html"
+                            class="segment-btn inline-flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300">Read
+                            More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="pt-20 lg:pt-28 pb-6 lg:pb-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-4">
+                        <div class="w-8 h-0.5 bg-green-500"></div><span
+                            class="text-xs font-semibold text-green-600 uppercase tracking-widest">Our Portfolio</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Featured Products</h2>
+                </div>
+                <a href="#"
+                    class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-green-600 transition-colors group">View
+                    All Products <i data-lucide="arrow-right"
+                        class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="product-acytron-forte.html"
+                    class="product-card bg-gradient-to-br from-brand-50 to-white rounded-2xl p-6 border border-brand-100 cursor-pointer block">
+                    <div class="w-full h-48 bg-white rounded-xl flex items-center justify-center mb-5 overflow-hidden">
+                        <img src="items/acytron-forte.jpeg" alt="Acytron-Forte"
+                            class="h-full object-contain rounded-lg">
+                    </div>
+                    <div
+                        class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-3">
+                        Andrology</div>
+                    <h4 class="font-bold text-gray-900 mb-1">Acytron-Forte</h4>
+                    <p class="text-xs text-gray-500">Advanced Andrological Formulation</p>
+                </a>
+                <a href="product-alpha-kd.html"
+                    class="product-card bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 border border-green-100 cursor-pointer block">
+                    <div class="w-full h-48 bg-white rounded-xl flex items-center justify-center mb-5 overflow-hidden">
+                        <img src="items/aplha-kd.jpeg" alt="Alpha-KD"
+                            class="h-full object-contain rounded-lg">
+                    </div>
+                    <div
+                        class="inline-block px-3 py-1 bg-green-100 text-green-700 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-3">
+                        Nephrology</div>
+                    <h4 class="font-bold text-gray-900 mb-1">Alpha-KD</h4>
+                    <p class="text-xs text-gray-500">Renal Support Supplement</p>
+                </a>
+                <a href="product-embry-s.html"
+                    class="product-card bg-gradient-to-br from-brand-50 to-white rounded-2xl p-6 border border-brand-100 cursor-pointer block">
+                    <div class="w-full h-48 bg-white rounded-xl flex items-center justify-center mb-5 overflow-hidden">
+                        <img src="items/embry-s.jpeg" alt="Embry-S"
+                            class="h-full object-contain rounded-lg">
+                    </div>
+                    <div
+                        class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-3">
+                        Gynecology</div>
+                    <h4 class="font-bold text-gray-900 mb-1">Embry-S</h4>
+                    <p class="text-xs text-gray-500">Fertility Support Formulation</p>
+                </a>
+                <a href="product-himtam-d.html"
+                    class="product-card bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 border border-green-100 cursor-pointer block">
+                    <div class="w-full h-48 bg-white rounded-xl flex items-center justify-center mb-5 overflow-hidden">
+                        <img src="items/hitam-d.jpeg" alt="HIMTAM-D"
+                            class="h-full object-contain rounded-lg">
+                    </div>
+                    <div
+                        class="inline-block px-3 py-1 bg-green-100 text-green-700 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-3">
+                        Sexology</div>
+                    <h4 class="font-bold text-gray-900 mb-1">HIMTAM-D</h4>
+                    <p class="text-xs text-gray-500">Sexual Health Supplement</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-section py-4 lg:py-6 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div
+                class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-brand-700 counter-value" data-target="25">0</div>
+                    <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider font-medium">Years of Trust</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-green-600 counter-value" data-target="500">0</div>
+                    <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider font-medium">Products</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-brand-700 counter-value" data-target="50">0</div>
+                    <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider font-medium">Countries Reached</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-green-600 counter-value" data-target="1000">0</div>
+                    <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider font-medium">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conference Participation -->
+    <section class="py-20 lg:py-28 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-72 h-72 bg-brand-100/40 rounded-full blur-3xl -z-0"></div>
+        <div class="absolute bottom-0 right-0 w-72 h-72 bg-green-100/40 rounded-full blur-3xl -z-0"></div>
+        <div class="relative max-w-7xl mx-auto px-4">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 mb-4 justify-center">
+                    <div class="w-8 h-0.5 bg-brand-500"></div><span class="text-xs font-semibold text-brand-600 uppercase tracking-widest">Our Presence</span>
+                    <div class="w-8 h-0.5 bg-brand-500"></div>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Conference Participation</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Himeros Pharma actively participates in national and international conferences, contributing to academic advancements and building collaborative networks in sexual health, reproductive medicine, and related therapeutic areas.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="group bg-gradient-to-br from-brand-50 to-white p-6 rounded-2xl border border-brand-100 hover:shadow-lg hover:border-brand-200 transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="text-white font-bold text-sm">22</span></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">ASTICON 2022</h3>
+                            <p class="text-xs text-gray-500 mb-2">46th National Conference of Indian Association for study of IASSTD & AIDS</p>
+                            <p class="text-sm text-brand-700 font-medium">Honouring for the outstanding academic grant for the conference of ASTICON 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100 hover:shadow-lg hover:border-green-200 transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="text-white font-bold text-sm">23</span></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">MID SEXCON 2023</h3>
+                            <p class="text-sm text-gray-600">Council of Sex Education &amp; Parenthood (International)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group bg-gradient-to-br from-brand-50 to-white p-6 rounded-2xl border border-brand-100 hover:shadow-lg hover:border-brand-200 transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="text-white font-bold text-sm">24</span></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">ASTICON 2024</h3>
+                            <p class="text-xs text-gray-500 mb-2">48th National Conference of IASSTD & AIDS</p>
+                            <p class="text-sm text-brand-700 font-medium">Honouring for the outstanding academic grant for the conference of ASTICON 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100 hover:shadow-lg hover:border-green-200 transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="text-white font-bold text-sm">24</span></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">SEXCON 2024</h3>
+                            <p class="text-xs text-gray-500 mb-2">40th National Conference of Sexology</p>
+                            <p class="text-sm text-green-700 font-medium">Award of Appreciation of Contribution as a Platinum Sponsor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group bg-gradient-to-br from-brand-50 to-white p-6 rounded-2xl border border-brand-100 hover:shadow-lg hover:border-brand-200 transition-all duration-300 lg:col-start-2">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">National CME</h3>
+                            <p class="text-sm text-gray-600">Participation in National CME, Law &amp; Psychiatry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards and Accolades -->
+    <section id="awards" class="py-20 lg:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-brand-100/40 rounded-full blur-3xl -z-0"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-green-100/40 rounded-full blur-3xl -z-0"></div>
+        <div class="relative max-w-7xl mx-auto px-4">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 mb-4 justify-center">
+                    <div class="w-8 h-0.5 bg-green-500"></div><span
+                        class="text-xs font-semibold text-green-600 uppercase tracking-widest">Recognition</span>
+                    <div class="w-8 h-0.5 bg-green-500"></div>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Awards and Accolades</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our commitment to excellence has been recognized by
+                    prestigious industry bodies, reinforcing our position as a leader in pharmaceutical innovation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+                <div
+                    class="award-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md cursor-pointer group">
+                    <div class="award-photo relative h-44 overflow-hidden"><img
+                            src="https://picsum.photos/seed/guinness-world-record/400/300.jpg"
+                            alt="Guinness World Records" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <div
+                            class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-3">
+                            World Record</div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-2 leading-snug">Guinness World Records</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Officially recognized for a world record in the
+                            pharmaceutical healthcare domain.</p>
+                    </div>
+                </div>
+                <div
+                    class="award-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md cursor-pointer group">
+                    <div class="award-photo relative h-44 overflow-hidden"><img
+                            src="https://picsum.photos/seed/award-trophy-gold/400/300.jpg"
+                            alt="New Introduction of the Year" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <div
+                            class="inline-block px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-3">
+                            Innovation</div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-2 leading-snug">New Introduction of the Year</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Honored for launching the most impactful new
+                            pharmaceutical product of the year.</p>
+                    </div>
+                </div>
+                <div
+                    class="award-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md cursor-pointer group">
+                    <div class="award-photo relative h-44 overflow-hidden"><img
+                            src="https://picsum.photos/seed/corporate-award-ceremony/400/300.jpg"
+                            alt="Corporate of the Year" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <div
+                            class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-3">
+                            Leadership</div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-2 leading-snug">Corporate of the Year</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Recognized for outstanding corporate
+                            governance, growth, and industry leadership.</p>
+                    </div>
+                </div>
+                <div
+                    class="award-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md cursor-pointer group">
+                    <div class="award-photo relative h-44 overflow-hidden"><img
+                            src="https://picsum.photos/seed/emerging-pharma-award/400/300.jpg"
+                            alt="Emerging Pharma Company of the Year" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <div
+                            class="inline-block px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-3">
+                            Emerging</div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-2 leading-snug">Emerging Pharma Company of the
+                            Year</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Awarded for exceptional growth trajectory and
+                            rising prominence in the pharma sector.</p>
+                    </div>
+                </div>
+                <div
+                    class="award-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md cursor-pointer group">
+                    <div class="award-photo relative h-44 overflow-hidden"><img
+                            src="https://picsum.photos/seed/global-healthcare-achievement/400/300.jpg"
+                            alt="Global Healthcare Achievement Award" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <div
+                            class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-3">
+                            Global</div>
+                        <h4 class="font-bold text-gray-900 text-sm mb-2 leading-snug">Global Healthcare Achievement
+                            Award</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Internationally acclaimed for transformative
+                            contributions to global healthcare access.</p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-12 bg-gradient-to-r from-brand-600 via-brand-700 to-green-600 rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-white/10">
+                        <i data-lucide="medal" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">5+ Prestigious Industry Awards</h3>
+                        <p class="text-white/80 text-sm">Each award reflects our unwavering commitment to innovation,
+                            quality, and patient care.</p>
+                    </div>
+                </div>
+                <a href="#"
+                    class="inline-flex items-center gap-2 bg-white text-brand-700 font-semibold px-7 py-3 rounded-full hover:bg-green-50 hover:text-green-700 transition-all duration-300 shadow-lg flex-shrink-0 text-sm">View
+                    All Achievements <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-4">
+                        <div class="w-8 h-0.5 bg-brand-500"></div><span
+                            class="text-xs font-semibold text-brand-600 uppercase tracking-widest">Latest Updates</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Blog & Insights</h2>
+                </div>
+                <a href="#"
+                    class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-green-600 transition-colors group">View
+                    All Posts <i data-lucide="arrow-right"
+                        class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="blog-isr-2025.html" class="group"><article>
+                    <div class="rounded-xl overflow-hidden mb-4"><img
+                            src="https://picsum.photos/seed/news-conference/500/300.jpg" alt="News 1"
+                            class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3"><span
+                            class="text-xs font-semibold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Conference</span><span
+                            class="text-xs text-gray-400">Jan 15, 2025</span></div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2">Himeros Pharma
+                        Participates in ISR 2025 Annual Conference</h4>
+                    <p class="text-sm text-gray-500 line-clamp-2">Showcasing our latest innovations in reproductive
+                        medicine at the Indian Society of Reproduction's annual conference.</p>
+                </article></a>
+                <a href="blog-inhaler-launch.html" class="group"><article>
+                    <div class="rounded-xl overflow-hidden mb-4"><img
+                            src="https://picsum.photos/seed/news-launch/500/300.jpg" alt="News 2"
+                            class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3"><span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full">Launch</span><span
+                            class="text-xs text-gray-400">Dec 08, 2024</span></div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2">New
+                        Respiratory Inhaler Range Launched Nationwide</h4>
+                    <p class="text-sm text-gray-500 line-clamp-2">Expanding our respiratory portfolio with
+                        next-generation inhaler technology for improved drug delivery.</p>
+                </article></a>
+                <a href="blog-award-2024.html" class="group"><article>
+                    <div class="rounded-xl overflow-hidden mb-4"><img
+                            src="https://picsum.photos/seed/news-award/500/300.jpg" alt="News 3"
+                            class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3"><span
+                            class="text-xs font-semibold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Award</span><span
+                            class="text-xs text-gray-400">Nov 22, 2024</span></div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2">Best Pharma
+                        Company in Women's Health Award 2024</h4>
+                    <p class="text-sm text-gray-500 line-clamp-2">Recognized for outstanding contribution to women's
+                        healthcare at the National Pharma Excellence Awards.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 mb-4 justify-center">
+                    <div class="w-8 h-0.5 bg-green-500"></div><span
+                        class="text-xs font-semibold text-green-600 uppercase tracking-widest">Get in Touch</span>
+                    <div class="w-8 h-0.5 bg-green-500"></div>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We'd love to hear from you. Whether you have a question about
+                    our products, need medical information, or want to partner with us.</p>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-8 items-start">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-brand-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Head Office</h4>
+                                <p class="text-sm text-gray-500 leading-relaxed">Himeros Pharma Ltd.<br>Unit No. 401,
+                                    4th Floor,<br>Pinnacle Business Park,<br>Andheri East, Mumbai - 400069</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Phone</h4>
+                                <p class="text-sm text-gray-500">+91 22 6241 0000</p>
+                                <p class="text-sm text-gray-500">Toll Free: 1800-XXX-XXXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6 text-brand-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Email</h4>
+                                <p class="text-sm text-gray-500">info@himerospharma.com</p>
+                                <p class="text-sm text-gray-500">medical@himerospharma.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Full Name *</label><input
+                                    type="text" required
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm"
+                                    placeholder="Your name"></div>
+                            <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Email *</label><input
+                                    type="email" required
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm"
+                                    placeholder="your@email.com"></div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Phone</label><input
+                                    type="tel"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm"
+                                    placeholder="+91 XXXXX XXXXX"></div>
+                            <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Subject</label><select
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm text-gray-600">
+                                    <option>Select a topic</option>
+                                    <option>Product Inquiry</option>
+                                    <option>Medical Information</option>
+                                    <option>Business Partnership</option>
+                                    <option>Careers</option>
+                                    <option>Other</option>
+                                </select></div>
+                        </div>
+                        <div><label class="block text-sm font-medium text-gray-700 mb-1.5">Message *</label><textarea
+                                required rows="4"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm resize-none"
+                                placeholder="How can we help you?"></textarea></div>
+                        <div class="flex items-center justify-between">
+                            <p id="formMessage" class="text-sm font-medium hidden"></p><button type="submit"
+                                class="ml-auto inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-green-500 text-white font-medium px-8 py-3 rounded-full hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-300">Send
+                                Message <i data-lucide="send" class="w-4 h-4"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 pt-16 pb-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 items-start">
+                <div>
+                    <div class="footer-logo-wrap mb-5">
+                        <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23" alt="Himeros Pharma Logo" class="h-10 w-auto object-contain">
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">A research-driven pharmaceutical company committed to improving lives through innovative healthcare solutions.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-5">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="segment.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Our Segments</a></li>
+                        <li><a href="products.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Products</a></li>
+                        <li><a href="awards.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Awards</a></li>
+                        <li><a href="blog.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Blog & News</a></li>
+                        <li><a href="contact.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-5">Therapeutic Areas</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Gynecology</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Infertility</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Andrology</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Respiratory</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Nephrology</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Orthopedics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-5">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Stay updated with our latest products, news, and healthcare insights.</p>
+                    <form id="newsletterForm" class="flex gap-2">
+                        <input type="email" required placeholder="Your email" class="flex-1 px-4 py-2.5 rounded-lg bg-white/10 border border-white/10 text-white text-sm placeholder-gray-500 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all">
+                        <button type="submit" class="px-4 py-2.5 bg-gradient-to-r from-brand-600 to-green-500 text-white rounded-lg text-sm font-medium hover:shadow-lg transition-all flex-shrink-0"><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                    </form>
+                    <p id="newsletterMsg" class="text-xs mt-2 hidden"></p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2025 Himeros Pharma Ltd. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-gray-300 transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop"
+        class="fixed bottom-6 right-6 w-12 h-12 bg-brand-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-brand-700 hover:shadow-xl z-50">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <script>
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const progressBar = document.getElementById('slideProgress');
+        let currentSlide = 0;
+        let slideInterval, progressInterval;
+        const SLIDE_DURATION = 6000;
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            resetProgress();
+        }
+
+        function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+
+        function resetProgress() {
+            if (!progressBar) return;
+            clearInterval(progressInterval);
+            let progress = 0;
+            progressBar.style.width = '0%';
+            progressInterval = setInterval(() => {
+                progress += 100 / (SLIDE_DURATION / 50);
+                progressBar.style.width = Math.min(progress, 100) + '%';
+            }, 50);
+        }
+
+        function startSlider() {
+            if (slides.length === 0) return;
+            clearInterval(slideInterval);
+            resetProgress();
+            slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => { goToSlide(parseInt(dot.dataset.slide)); startSlider(); });
+        });
+
+        startSlider();
+
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        const counters = document.querySelectorAll('.counter-value');
+
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const duration = 2000;
+                const steps = Math.round(duration / 16);
+                const increment = target / steps;
+                let current = 0;
+                counter.textContent = '0';
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) { counter.textContent = Math.floor(current) + '+'; requestAnimationFrame(updateCounter); }
+                    else { counter.textContent = target + '+'; }
+                };
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statsObserver.disconnect();
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) statsObserver.observe(statsSection);
+
+        const scrollElements = document.querySelectorAll('section > div');
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.1 });
+
+        scrollElements.forEach(el => {
+            el.style.opacity = '0'; el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            scrollObserver.observe(el);
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) navbar.classList.add('shadow-md');
+            else navbar.classList.remove('shadow-md');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' }); }
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                formMessage.classList.remove('hidden');
+                formMessage.className = 'text-sm font-medium text-green-600';
+                formMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+                this.reset();
+                setTimeout(() => { formMessage.classList.add('hidden'); }, 5000);
+            });
+        }
+
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterMsg = document.getElementById('newsletterMsg');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                newsletterMsg.classList.remove('hidden');
+                newsletterMsg.className = 'text-xs mt-2 text-green-400';
+                newsletterMsg.textContent = '✓ Subscribed successfully!';
+                this.reset();
+                setTimeout(() => { newsletterMsg.classList.add('hidden'); }, 4000);
+            });
+        }
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) { backToTop.style.opacity = '1'; backToTop.style.pointerEvents = 'auto'; }
+            else { backToTop.style.opacity = '0'; backToTop.style.pointerEvents = 'none'; }
+        });
+        backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // Initialize Lucide icons when page is fully loaded
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
+            }
+        });
+
+                // Auth state management
+        (function() {
+            // Set employee name in nav when logged in
+            if (document.documentElement.getAttribute("data-auth") === "in") {
+                var empId = localStorage.getItem("empName") || "EMP001";
+                var eid = document.getElementById("empNavId");
+                var meid = document.getElementById("mobileEmpId");
+                if (eid) eid.textContent = empId;
+                if (meid) meid.textContent = empId;
+            }
+            try {
+                // Document click closes dropdown
+                var ddMenu = document.getElementById("empDropdownMenu");
+                document.addEventListener("click", function() {
+                    if (ddMenu) ddMenu.classList.add("hidden");
+                });
+            } catch(e) {}
+            try {
+                function doLogout() {
+                    localStorage.removeItem("loggedIn");
+                    localStorage.removeItem("empName");
+                    window.location.reload();
+                }
+                var loBtn = document.getElementById("logoutBtn");
+                var mLoBtn = document.getElementById("mobileLogoutBtn");
+                if (loBtn) loBtn.addEventListener("click", doLogout);
+                if (mLoBtn) mLoBtn.addEventListener("click", doLogout);
+            } catch(e) {}
+        })();
+                                                                                // Page Transition
+                                                                                (function () {
+                                                                                    var overlay = document.getElementById('pageTransition');
+                                                                                    window.addEventListener('pageshow', function() {
+                                                                                        if (overlay) {
+                                                                                            overlay.style.animation = '';
+                                                                                            overlay.style.transition = '';
+                                                                                            overlay.style.opacity = '';
+                                                                                        }
+                                                                                        });
+                                                                                    document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+                                                                                        link.addEventListener('click', function(e) {
+                                                                                            var href = this.getAttribute('href');
+                                                                                            if (href.startsWith('http') && !href.includes(window.location.host)) return;
+                                                                                            e.preventDefault();
+                                                                                            if (overlay) {
+                                                                                                overlay.style.animation = 'none';
+                                                                                                void overlay.offsetHeight;
+                                                                                                overlay.style.transition = 'opacity 0.3s ease';
+                                                                                                overlay.style.opacity = '1';
+                                                                                                setTimeout(function() { window.location.href = href; }, 400);
+                                                                                            } else {
+                                                                                                window.location.href = href;
+                                                                                            }
+                                                                                        });
+                                                                                    });
+                                                                                })();
+</body>
+
+</html>
