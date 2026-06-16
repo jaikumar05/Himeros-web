@@ -195,6 +195,7 @@
             if (empId === 'EMP001' && password === 'himros@123') {
                 sessionStorage.setItem('loggedIn', 'true');
                 sessionStorage.setItem('empName', 'Employee 001');
+                sessionStorage.setItem('empId', empId);
                 window.location.href = 'index.html';
             } else {
                 document.getElementById('loginError').textContent = 'Invalid Employee ID or Password. Please try again.';
