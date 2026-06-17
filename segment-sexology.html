@@ -95,7 +95,7 @@
                             <button id="logoutBtn" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors w-full text-left"><i data-lucide="log-out" class="w-4 h-4"></i> Logout</button>
                         </div>
                     </div>
-                    <button id="menuToggle" class="md:hidden p-2 text-gray-600 hover:text-brand-600 transition-colors">
+                    <button id="menuToggle" onclick="document.getElementById('mobileMenu').classList.add('open');document.getElementById('menuOverlay').classList.remove('hidden');document.body.style.overflow='hidden';" class="md:hidden p-2 text-gray-600 hover:text-brand-600 transition-colors">
                         <span class="block w-6 h-0.5 bg-gray-700 rounded mb-1.5"></span>
                         <span class="block w-6 h-0.5 bg-gray-700 rounded mb-1.5"></span>
                         <span class="block w-6 h-0.5 bg-gray-700 rounded"></span>
@@ -109,7 +109,7 @@
         <div class="p-6">
             <div class="flex justify-between items-center mb-8">
                 <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23" alt="Himeros Pharma Logo" class="h-9 w-auto object-contain">
-                <button id="menuClose" class="p-2 text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button id="menuClose" onclick="document.getElementById('mobileMenu').classList.remove('open');document.getElementById('menuOverlay').classList.add('hidden');document.body.style.overflow='';" class="p-2 text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <div class="flex flex-col gap-1">
                 <a href="index.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Home</a>
@@ -130,7 +130,7 @@
                 </div>
         </div>
     </div>
-    <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+    <div id="menuOverlay" onclick="document.getElementById('mobileMenu').classList.remove('open');this.classList.add('hidden');document.body.style.overflow='';" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
     <!-- Breadcrumb -->
     <section class="bg-gray-50 border-b border-gray-100">
