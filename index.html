@@ -1263,32 +1263,26 @@
         mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
 
         const counters = document.querySelectorAll('.counter-value');
+        let countersAnimated = false;
 
         function animateCounters() {
             counters.forEach(counter => {
                 const target = parseInt(counter.dataset.target);
                 const duration = 2000;
-                const steps = Math.round(duration / 16);
-                const increment = target / steps;
+                const increment = target / (duration / 16);
                 let current = 0;
-                counter.textContent = '0';
                 const updateCounter = () => {
                     current += increment;
                     if (current < target) { counter.textContent = Math.floor(current) + '+'; requestAnimationFrame(updateCounter); }
                     else { counter.textContent = target + '+'; }
                 };
-                requestAnimationFrame(updateCounter);
+                updateCounter();
             });
         }
 
         const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    statsObserver.disconnect();
-                    animateCounters();
-                }
-            });
-        }, { threshold: 0.3 });
+            entries.forEach(entry => { if (entry.isIntersecting && !countersAnimated) { countersAnimated = true; animateCounters(); } });
+        }, { threshold: 0.1 });
 
         const statsSection = document.querySelector('.stats-section');
         if (statsSection) statsObserver.observe(statsSection);
