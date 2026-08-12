@@ -33,36 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Auth visibility */
-        #empDropdownWrap {
-            display: none !important
-        }
-
-        [data-auth="in"] #empDropdownWrap {
-            display: inline-block !important
-        }
-
-        @media(max-width:767px) {
-            [data-auth="in"] #empDropdownWrap {
-                display: none !important
-            }
-        }
-
-        [data-auth="in"] #loginBtn {
-            display: none !important
-        }
-
-        [data-auth="in"] #mobileLoginBtn {
-            display: none !important
-        }
-
-        #mobileLoggedIn {
-            display: none !important
-        }
-
-        [data-auth="in"] #mobileLoggedIn {
-            display: block !important
-        }
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -337,7 +307,7 @@
 </head>
 
 <body class="bg-white text-gray-800">
-    <script>if (sessionStorage.getItem('loggedIn') === 'true') { document.documentElement.setAttribute('data-auth', 'in') } else { document.documentElement.setAttribute('data-auth', 'out') }</script>
+
     <!-- Page Transition Overlay -->
     <div class="page-transition-overlay" id="pageTransition"></div>
 
@@ -368,28 +338,7 @@
                         Us</a>
                 </div>
                 <div class="flex items-center gap-3">
-                    <a href="login.html" id="loginBtn"
-                        class="hidden md:inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 text-sm font-medium px-5 py-2 rounded-full hover:bg-brand-600 hover:text-white transition-all duration-300"><i
-                            data-lucide="user" class="w-4 h-4"></i> Login / Sign Up</a>
-                    <div id="empDropdownWrap" class="hidden relative">
-                        <button id="empDropdownBtn"
-                            onclick="var m=document.getElementById('empDropdownMenu');if(m)m.classList.toggle('hidden');event.stopPropagation();"
-                            class="inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 text-sm font-medium px-5 py-2 rounded-full hover:bg-brand-600 hover:text-white transition-all duration-300 whitespace-nowrap">
-                            <i data-lucide="user" class="w-4 h-4 flex-shrink-0"></i>
-                            <span id="empNavId" class="truncate max-w-[120px]">EMP001</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 flex-shrink-0"></i>
-                        </button>
-                        <div id="empDropdownMenu"
-                            class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 hidden">
-                            <a href="employee-dashboard.html"
-                                class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors"><i
-                                    data-lucide="layout-dashboard" class="w-4 h-4"></i> Employee Dashboard</a>
-                            <hr class="my-1 border-gray-100">
-                            <button id="logoutBtn"
-                                class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors w-full text-left"><i
-                                    data-lucide="log-out" class="w-4 h-4"></i> Logout</button>
-                        </div>
-                    </div>
+
                     <button id="menuToggle"
                         onclick="document.getElementById('mobileMenu').classList.add('open');document.getElementById('menuOverlay').classList.remove('hidden');document.body.style.overflow='hidden';"
                         class="md:hidden p-2 text-gray-600 hover:text-brand-600 transition-colors">
@@ -429,21 +378,7 @@
                     class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Contact
                     Us</a>
             </div>
-            <div class="mt-8" id="mobileAuthSection">
-                <a href="login.html" id="mobileLoginBtn"
-                    class="flex items-center justify-center gap-2 w-full border-2 border-brand-600 text-brand-600 font-medium px-6 py-3 rounded-full hover:bg-brand-600 hover:text-white transition-all"><i
-                        data-lucide="user" class="w-4 h-4"></i> Login / Sign Up</a>
-                <div id="mobileLoggedIn" class="hidden space-y-3">
-                    <div class="text-center text-sm text-gray-500">Logged in as <span class="text-gray-700 font-medium"
-                            id="mobileEmpId">EMP001</span></div>
-                    <a href="employee-dashboard.html"
-                        class="flex items-center justify-center gap-2 w-full border-2 border-brand-600 text-brand-600 font-medium px-6 py-3 rounded-full hover:bg-brand-600 hover:text-white transition-all"><i
-                            data-lucide="layout-dashboard" class="w-4 h-4"></i> Employee Dashboard</a>
-                    <button id="mobileLogoutBtn"
-                        class="flex items-center justify-center gap-2 w-full border-2 border-red-400 text-red-600 font-medium px-6 py-3 rounded-full hover:bg-red-500 hover:text-white transition-all"><i
-                            data-lucide="log-out" class="w-4 h-4"></i> Logout</button>
-                </div>
-            </div>
+
         </div>
     </div>
     <div id="menuOverlay"
@@ -1193,35 +1128,7 @@
             }
         });
 
-        // Auth state management
-        (function () {
-            // Set employee name in nav when logged in
-            if (document.documentElement.getAttribute("data-auth") === "in") {
-                var empId = sessionStorage.getItem("empName") || "EMP001";
-                var eid = document.getElementById("empNavId");
-                var meid = document.getElementById("mobileEmpId");
-                if (eid) eid.textContent = empId;
-                if (meid) meid.textContent = empId;
-            }
-            try {
-                // Document click closes dropdown
-                var ddMenu = document.getElementById("empDropdownMenu");
-                document.addEventListener("click", function () {
-                    if (ddMenu) ddMenu.classList.add("hidden");
-                });
-            } catch (e) { }
-            try {
-                function doLogout() {
-                    sessionStorage.removeItem("loggedIn");
-                    sessionStorage.removeItem("empName");
-                    window.location.href = 'index.html';
-                }
-                var loBtn = document.getElementById("logoutBtn");
-                var mLoBtn = document.getElementById("mobileLogoutBtn");
-                if (loBtn) loBtn.addEventListener("click", doLogout);
-                if (mLoBtn) mLoBtn.addEventListener("click", doLogout);
-            } catch (e) { }
-        })();
+
         // Page Transition
         (function () {
             var overlay = document.getElementById('pageTransition');
