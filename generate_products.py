@@ -247,7 +247,7 @@ products = [
         "name": "Alpha-KD DS",
         "category_badges": '<span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Nephrology</span>',
         "subtitle": "Double Strength Chronic Kidney Disease Support",
-        "image": "items/aplha-kd.jpeg",
+        "image": "items/aplha-kd ds.jpeg",
         "description_short": "Alpha-KD DS consists of a double strength formula of Alpha Ketoanalogues of Amino Acids indicated for advanced Chronic Kidney Disease (CKD).",
         "description_long": "Alpha-KD DS consists of a double strength specialized formula of Alpha Ketoanalogues of Amino Acids. Indicated for Chronic Kidney Disease (CKD), it serves as a complete nutritional and metabolic therapy to manage and delay progression to End-Stage Renal Disease (ESRD). When paired with a protein-restricted diet, it preserves essential nutritional status while recycling systemic wastes. By actively reducing the nitrogen load—lowering Blood Urea Nitrogen (BUN), urea, ammonia, creatinine, and harmful acids—it prevents uremic complications, maintains ideal amino acid balance, and effectively delays the initiation of dialysis.",
         "composition": "Alpha Ketoanalogue of Amino Acid (Double Strength)",
