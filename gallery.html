@@ -117,37 +117,15 @@
     <!-- Gallery Section -->
     <section class="py-16 lg:py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
-            <!-- Filter Category Tabs -->
-            <div class="flex flex-wrap gap-3 mb-12 justify-center" id="galleryFilter">
-                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-700 hover:border-brand-600 hover:text-brand-600 transition-all active" data-category="all">All Photos</button>
-                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-700 hover:border-brand-600 hover:text-brand-600 transition-all" data-category="products">Formulations</button>
-                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-700 hover:border-brand-600 hover:text-brand-600 transition-all" data-category="facilities">Research & Facilities</button>
-                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-700 hover:border-brand-600 hover:text-brand-600 transition-all" data-category="leadership">Leadership & Team</button>
-                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-white text-gray-700 hover:border-brand-600 hover:text-brand-600 transition-all" data-category="publications">Publications & Books</button>
-            </div>
-
             <!-- Empty Gallery State -->
             <div id="galleryGrid" class="py-20 text-center">
                 <div class="w-16 h-16 bg-brand-50 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i data-lucide="image" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Gallery Coming Soon</h3>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h3>
                 <p class="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">Our visual showcase and media gallery is currently being updated. Check back soon for photos of our events, research facilities, and medical conferences.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/80 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all z-10">
-            <i data-lucide="x" class="w-7 h-7"></i>
-        </button>
-        <div class="max-w-4xl w-full text-center">
-            <img id="lightboxImg" src="" alt="Full view" class="max-h-[80vh] mx-auto object-contain rounded-lg shadow-2xl mb-4">
-            <h3 id="lightboxCaption" class="text-white text-lg font-medium"></h3>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto px-4 pt-16 pb-8">
@@ -177,47 +155,6 @@
     </footer>
 
     <script>
-        // Category Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.gallery-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const cat = btn.dataset.category;
-                cards.forEach(card => {
-                    if (cat === 'all' || card.dataset.category === cat) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Lightbox Functions
-        function openLightbox(src, caption) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightboxCaption').textContent = caption;
-            const modal = document.getElementById('lightboxModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const modal = document.getElementById('lightboxModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
-
-        // Close on background click
-        document.getElementById('lightboxModal').addEventListener('click', (e) => {
-            if (e.target.id === 'lightboxModal') closeLightbox();
-        });
-
         // Mobile Menu
         const menuToggle = document.getElementById('menuToggle');
         const menuClose = document.getElementById('menuClose');
