@@ -304,8 +304,8 @@ def replace_content(html, product):
     # Replace Subtitle
     html = re.sub(r'<p class="text-lg text-gray-500 mb-6">.*?</p>', f'<p class="text-lg text-gray-500 mb-6">{product["subtitle"]}</p>', html)
     
-    # Replace Description Short
-    html = re.sub(r'<p class="text-gray-600 leading-relaxed mb-8">.*?</p>', f'<p class="text-gray-600 leading-relaxed mb-8">\n                        {product["description_short"]}\n                    </p>', html, flags=re.DOTALL)
+    # Remove Description Short if present
+    html = re.sub(r'\s*<p class="text-gray-600 leading-relaxed mb-8">\s*.*?\s*</p>', '', html, flags=re.DOTALL)
     
     # Product Info (Description Long)
     info_desc_regex = r'<h3 class="text-lg font-bold text-gray-900 mb-4">Description</h3>\s*<p class="text-gray-600 leading-relaxed">.*?</p>'
