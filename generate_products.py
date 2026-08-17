@@ -22,6 +22,20 @@ products = [
         "indications": "Low Libido, Erectile Dysfunction, Premature Ejaculation, Anorgasmia"
     },
     {
+        "filename": "product-himract-capsule.html",
+        "title": "Himract Capsule - Himeros Pharma Ltd.",
+        "name": "Himract Capsule",
+        "category_badges": '<span class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Andrology</span>\n                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>',
+        "subtitle": "Male Sexual Vitality & Performance Support",
+        "image": "items/himract.jpeg",
+        "logo": "items/Himract%20capsule.png",
+        "description_short": "Himract Capsule combines multiple evidence-based ingredients that work synergistically to address the vascular, hormonal, neurological, and psychological aspects of male sexual dysfunction.",
+        "description_long": "Himract Capsule combines multiple evidence-based ingredients that work synergistically to address the vascular, hormonal, neurological, and psychological aspects of male sexual dysfunction. It promotes nitric oxide synthesis to enhance vasodilation, penile perfusion, and erectile function, while supporting endogenous testosterone production to improve libido, stamina, and sexual performance. The formulation also enhances cavernosal microcirculation, optimizes reproductive health, and helps restore neurotransmitter balance associated with stress, thereby improving mood, confidence, and overall sexual well-being. By targeting multiple pathways simultaneously, Himract Capsule provides comprehensive support for male sexual and reproductive health.",
+        "composition": "L-arginine + Tribulus Terrestris + Fenugreek Extract + Hypericum Perforatum + Zinc + Vitamin B6",
+        "packaging": "1*10 Capsules/Strip",
+        "indications": "Low Libido, Erectile Dysfunction, Premature Ejaculation, Anorgasmia"
+    },
+    {
         "filename": "product-himract-gold.html",
         "title": "Himract Gold - Himeros Pharma Ltd.",
         "name": "Himract Gold",
@@ -44,10 +58,10 @@ products = [
         "image": "items/androwin.jpeg",
         "logo": "items/Androwin.png",
         "description_short": "A scientifically formulated antioxidant and mitochondrial support therapy designed to improve male fertility by enhancing sperm energy metabolism, motility, and cellular protection.",
-        "description_long": "A scientifically formulated antioxidant and mitochondrial support therapy designed to improve male fertility by enhancing sperm energy metabolism, motility, and cellular protection. Androwin improves mitochondrial function and ATP production, supporting sperm vitality and motility. It  provides potent antioxidant protection against oxidative stress and DNA damage, while supports testosterone balance, spermatogenesis, and sperm quality. Together, the formulation offers comprehensive support for sperm count, motility, morphology, and overall reproductive health in male infertility management.",
+        "description_long": "A scientifically formulated antioxidant and mitochondrial support therapy designed to improve male fertility by enhancing sperm energy metabolism, motility, and cellular protection. Androwin improves mitochondrial function and ATP production, supporting sperm vitality and motility. It provides potent antioxidant protection against oxidative stress and DNA damage, while supports testosterone balance, spermatogenesis, and sperm quality. Together, the formulation offers comprehensive support for sperm count, motility, morphology, and overall reproductive health in male infertility management.",
         "composition": "Ubiquinol Acetate (Reduced CoQ10) + L-Carnitine L-Tartrate 10% + Zinc Sulphate Monohydrate + Lycopene 6%",
         "packaging": "1 x 10 Cap/ strip",
-        "indications": "the management of Male Infertility"
+        "indications": "Male Infertility"
     },
     {
         "filename": "product-erectlong.html",
@@ -68,7 +82,7 @@ products = [
         "title": "Tadox 2.5 - Himeros Pharma Ltd.",
         "name": "Tadox 2.5",
         "category_badges": '<span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>',
-        "subtitle": "Erectile Dysfunction",
+        "subtitle": "Low-Dose Tadalafil Therapy",
         "image": "items/tadox-2'5.jpeg",
         "logo": "items/Tadox%202.25.png",
         "description_short": "Tadox 2.5 is a low-dose tadalafil-based therapy designed to provide continuous support in erectile dysfunction (ED) and premature ejaculation (PME) through improved penile hemodynamics.",
@@ -100,7 +114,7 @@ products = [
         "image": "items/himrect gel.jpeg",
         "logo": "items/Himract%20gel.png",
         "description_short": "L-Arginine Gel 5% w/w is a topical nitric oxide-enhancing therapy designed to support erectile function and sexual performance in men and sensory enhancement in women.",
-        "description_long": "L-Arginine Gel 5% w/w is a topical nitric oxide-enhancing therapy designed to support erectile function and sexual performance in men with erectile dysfunction (ED) and premature ejaculation (PME). By increasing local nitric oxide availability, it promotes vasodilation, improved penile blood circulation, enhanced sensitivity, and erection quality. For females, it helps improve genital blood flow, tissue engorgement, lubrication, and sensory responsiveness by enhancing nitric oxide-mediated vascular relaxation. Increased local circulation promotes greater arousal, comfort, and sensitivity during intimacy.",
+        "description_long": "L-Arginine Gel 5% w/w is a topical nitric oxide-enhancing therapy designed to support erectile function and sexual performance in men with erectile dysfunction (ED) and premature ejaculation (PME). By increasing local nitric oxide availability, it promotes vasodilation, improved penile blood circulation, enhanced sensitivity, and erection quality. Improved rigidity and sustained erection may also help reduce performance anxiety and improve ejaculatory control. Its topical route allows targeted action with rapid local absorption, making it a supportive and non-invasive therapy for enhancing sexual confidence, performance stability, and overall intimate wellness.",
         "composition": "L-Arginine Gel 5% w/w",
         "packaging": "One tube: 20 gm",
         "indications": "Erectile Dysfunction, Sensory & Microcirculatory Enhancement in Females"
@@ -128,7 +142,7 @@ products = [
         "image": "items/durahim-30.jpeg",
         "logo": "items/Durahim%2030.png",
         "description_short": "DURAHIM 30 contains Dapoxetine Hydrochloride IP 30 mg, the gold standard fast-acting oral treatment approved for Premature Ejaculation (PE).",
-        "description_long": "DURAHIM 30 contains Dapoxetine Hydrochloride IP 30 mg, the gold standard fast-acting oral treatment specifically approved for Premature Ejaculation (PE). Taken 1–2 hours before sexual activity, it regulates central ejaculatory control mechanisms, significantly extending intravaginal latency time, enhancing control, and reducing performance distress.",
+        "description_long": "DURAHIM 30 / 60 contains Dapoxetine Hydrochloride IP (30 mg and 60 mg), the gold standard and only SSRI specifically approved and specialized for Premature Ejaculation (PE). Unlike off-label, long-acting antidepressants, it acts as an on-demand, fast-acting oral treatment. Taken 1–2 hours before sexual activity, it regulates central ejaculatory control mechanisms, significantly extending intravaginal latency time, enhancing control, and reducing sexual distress, offering a comprehensive, targeted systemic therapy for managing PE.",
         "composition": "Dapoxetine Hydrochloride IP 30 mg",
         "packaging": "1*10 Tablets/Strip",
         "indications": "Premature Ejaculation"
@@ -142,7 +156,7 @@ products = [
         "image": "items/durahim.jpeg",
         "logo": "items/Durahaim%2060.png",
         "description_short": "DURAHIM 60 contains Dapoxetine Hydrochloride IP 60 mg, a higher-strength fast-acting oral formulation for advanced management of Premature Ejaculation (PE).",
-        "description_long": "DURAHIM 60 contains Dapoxetine Hydrochloride IP 60 mg, a higher-strength fast-acting oral treatment specifically approved for Premature Ejaculation (PE). Taken 1–2 hours before sexual activity, it regulates central ejaculatory control mechanisms, significantly extending intravaginal latency time, enhancing control, and reducing performance distress for complete sexual performance management.",
+        "description_long": "DURAHIM 30 / 60 contains Dapoxetine Hydrochloride IP (30 mg and 60 mg), the gold standard and only SSRI specifically approved and specialized for Premature Ejaculation (PE). Unlike off-label, long-acting antidepressants, it acts as an on-demand, fast-acting oral treatment. Taken 1–2 hours before sexual activity, it regulates central ejaculatory control mechanisms, significantly extending intravaginal latency time, enhancing control, and reducing sexual distress, offering a comprehensive, targeted systemic therapy for managing PE.",
         "composition": "Dapoxetine Hydrochloride IP 60 mg",
         "packaging": "1*10 Tablets/Strip",
         "indications": "Premature Ejaculation"
@@ -162,6 +176,34 @@ products = [
         "indications": "Primary & Secondary Hypogonadism, Low Libido"
     },
     {
+        "filename": "product-librt-tablet.html",
+        "title": "Librt Tablet - Himeros Pharma Ltd.",
+        "name": "Librt Tablet",
+        "category_badges": '<span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>\n                        <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Gynecology</span>',
+        "subtitle": "Hypoactive Sexual Desire Support",
+        "image": "items/librt capsule.jpeg",
+        "logo": "items/Libart%20caupsule.png",
+        "description_short": "LIBRT Tablet is a nutritional support formulation designed to support female sexual wellness, particularly in women experiencing reduced sexual desire and diminished sexual responsiveness.",
+        "description_long": "LIBRT Tablet is a nutritional support formulation designed to support female sexual wellness, particularly in women experiencing reduced sexual desire and diminished sexual responsiveness. Its combination supports nitric oxide production, healthy genital blood flow, sexual sensitivity, energy, and libido. L-Arginine supports nitric oxide-mediated vasodilation and circulation to genital tissues, while Horny Goat Weed provides botanical support for vascular function and sexual vitality. Maca Extract further supports sexual desire, energy, and overall vitality. Together, these ingredients provide comprehensive support for healthy blood flow, sensitivity, sexual desire, and overall intimate wellness, helping promote confidence and a more satisfying sexual experience.",
+        "composition": "L-Arginine, Horny Goat Weed Extract & Maca Extract",
+        "packaging": "1*10 tablets/Strip",
+        "indications": "Hypoactive Sexual Desire Disorder in male"
+    },
+    {
+        "filename": "product-librt-pro.html",
+        "title": "Librt Pro - Himeros Pharma Ltd.",
+        "name": "Librt Pro",
+        "category_badges": '<span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>\n                        <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Gynecology</span>',
+        "subtitle": "Advanced Female Sexual Wellness",
+        "image": "items/librt-pro.jpeg",
+        "logo": "items/Librt%20pro.png",
+        "description_short": "LIBRT Pro is a concentrated sachet-based nutritional formulation designed to support female sexual wellness, particularly in women experiencing reduced sexual desire and diminished sexual responsiveness.",
+        "description_long": "LIBRT Pro is a concentrated sachet-based nutritional formulation designed to support female sexual wellness, particularly in women experiencing reduced sexual desire and diminished sexual responsiveness. It provides targeted and synergistic support for nitric oxide production, genital blood flow, sexual sensitivity, libido, energy, and vitality. The high L-Arginine content plays a central role in supporting nitric oxide–mediated vasodilation and enhanced circulation to genital tissues, helping improve physiological arousal response. Horny Goat Weed further supports vascular function and sexual vitality through its traditional aphrodisiac properties, while Maca Extract contributes to improved sexual desire, stamina, energy, and overall well-being. Together, this advanced sachet formulation offers comprehensive support for healthy blood flow, heightened sensitivity, improved desire, and enhanced sexual performance, helping promote confidence and overall intimate wellness.",
+        "composition": "L-Arginine, Horny Goat Weed Extract & Maca Extract",
+        "packaging": "One sachet of 5 gms",
+        "indications": "Hypoactive sexual arousal disorder in men"
+    },
+    {
         "filename": "product-tadox-5.html",
         "title": "Tadox 5 - Himeros Pharma Ltd.",
         "name": "Tadox 5",
@@ -171,9 +213,9 @@ products = [
         "logo": "items/Tadox%205.png",
         "description_short": "TADOX 5 contains Micronized Tadalafil 5 mg, a highly effective once-daily oral formulation specifically approved for managing Benign Prostatic Hyperplasia (BPH) and Lower Urinary Tract Symptoms (LUTS).",
         "description_long": "TADOX 5 contains Micronized Tadalafil 5 mg, a highly effective once-daily oral formulation specifically approved for managing Benign Prostatic Hyperplasia (BPH) and Lower Urinary Tract Symptoms (LUTS), whether presenting with or without concurrent Erectile Dysfunction (ED). It offers a comprehensive, dual-action therapy by significantly improving total International Prostate Symptom Score (IPSS) and BPH Impact Index (BII) scores, while simultaneously reducing intraprostatic inflammation. By treating both urological blockages and sexual health complications, it delivers unified, continuous symptom relief and improves the overall Sexual Encounter Profile (SEP) score.",
-        "composition": "Tadalafil",
+        "composition": "Micronized Tadalafil",
         "packaging": "1*10 Tablets/Strip",
-        "indications": "BPH / LUTS"
+        "indications": "BPH / LUTS / ED"
     },
     {
         "filename": "product-himtam-d.html",
@@ -187,35 +229,7 @@ products = [
         "description_long": "HIMTAM-D is a powerful fixed-dose combination capsule pairing Tamsulosin Hydrochloride Prolonged-Release with Dutasteride. Engineered for Benign Prostatic Hyperplasia (BPH), this formulation delivers complete therapy by targeting both the dynamic and structural components of the disease. HIMTAM-D offers rapid, functional relief from urinary blockages by relaxing the bladder neck, and addresses the underlying cause by shrinking the enlarged prostate gland over time. Together, they effectively control BPH progression, minimize the risk of acute urinary retention, and significantly alleviate Lower Urinary Tract Symptoms (LUTS).",
         "composition": "Tamsulosin Hydrochloride Prolonged-Release & Dutasteride",
         "packaging": "1*15 Capsules/Strip",
-        "indications": "BPH / LUTS"
-    },
-    {
-        "filename": "product-librt-tablet.html",
-        "title": "Librt Tablet - Himeros Pharma Ltd.",
-        "name": "Librt Tablet",
-        "category_badges": '<span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>\n                        <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Gynecology</span>',
-        "subtitle": "Hypoactive Sexual Desire Support",
-        "image": "items/librt capsule.jpeg",
-        "logo": "items/Libart%20caupsule.png",
-        "description_short": "This advanced nutraceutical formula combines L-Arginine, Horny Goat Weed Extract, and Maca Extract to deliver a complete therapy for both Erectile Dysfunction (ED) and Premature Ejaculation (PME).",
-        "description_long": "This advanced nutraceutical formula combines L-Arginine, Horny Goat Weed Extract, and Maca Extract to deliver a complete, dual-action therapy for both Erectile Dysfunction (ED) and Premature Ejaculation (PME) in males, and Hypoactive Sexual Desire Disorder (HSDD) in females. Librt synergistically optimize pelvic blood flow and nitric oxide pathways to restore robust erectile function and firmness. Simultaneously, It acts adaptogenically to balance neuroendocrine function, enhance stamina, and improve ejaculatory control.",
-        "composition": "L-Arginine, Horny Goat Weed Extract & Maca Extract",
-        "packaging": "1*10 tablets/Strip",
-        "indications": "Hypoactive Sexual Desire Disorder"
-    },
-    {
-        "filename": "product-librt-pro.html",
-        "title": "Librt Pro - Himeros Pharma Ltd.",
-        "name": "Librt Pro",
-        "category_badges": '<span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>\n                        <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Gynecology</span>',
-        "subtitle": "Advanced Female Sexual Wellness",
-        "image": "items/librt-pro.jpeg",
-        "logo": "items/Librt%20pro.png",
-        "description_short": "LIBRT PRO is an advanced female sexual wellness formulation developed to support women experiencing Hypoactive Sexual Desire Disorder (HSDD), reduced arousal, and diminished sexual responsiveness.",
-        "description_long": "LIBRT PRO is an advanced female sexual wellness formulation developed to support women experiencing Hypoactive Sexual Desire Disorder (HSDD), reduced arousal, and diminished sexual responsiveness. As an upgraded formulation, it combines higher-strength L-Arginine (3 g), Horny Goat Weed Extract, and Maca Extract to target vascular, hormonal, neurological, and energy-related aspects of female sexual health. By supporting genital blood flow, sensitivity, libido, and emotional well-being, LIBRT PRO offers comprehensive support for female sexual desire, arousal, intimacy, and overall sexual satisfaction.",
-        "composition": "L-Arginine (3g), Horny Goat Weed Extract & Maca Extract",
-        "packaging": "One sachet",
-        "indications": "Hypoactive Sexual Arousal Disorder"
+        "indications": "BPH / LUTS / ED"
     },
     {
         "filename": "product-prokd-15.html",
@@ -226,8 +240,8 @@ products = [
         "image": "items/pro-kd15.jpeg",
         "logo": "items/ProdkD%2015.png",
         "description_short": "Pro-KD 15 features a balanced synbiotic formula combining specific probiotic strains with prebiotic to protect the gut-kidney metabolism.",
-        "description_long": "Pro-KD 15 features a balanced synbiotic formula combining specific probiotic strains with prebiotic (15 Billion CFU). Specially designed to protect the gut-kidney metabolism, it provides an adjuvant therapy for chronic kidney disease and End-Stage Renal Disease (ESRD). By balancing the microbiome and actively removing systemic nitrogenous wastes, it lowers the toxic burden to help delay progression to ESRD.",
-        "composition": "Streptococcus Thermophilus, Lactobacillus Acidophilus, Bifidobacterium Longum, Bacillus Coagulans, Fructo Oligosaccharides (15 Billion CFU)",
+        "description_long": "Pro-KD 45 / 15 features a balanced synbiotic formula combining specific probiotic strains with prebiotic. Specially designed to protect the gut-kidney metabolism, it provides a complete adjuvant therapy for chronic kidney disease and End-Stage Renal Disease (ESRD). By balancing the microbiome, strengthening gut defense, and actively removing systemic nitrogenous wastes through the stools, it dramatically lowers the toxic burden (reducing BUN up to 63% and creatinine up to 43%) to successfully delay progression to ESRD.",
+        "composition": "Streptococcus Thermophilus, Lactobacillus Acidophilus, Bifidobacterium Longum, Bacillus Coagulans, Fructo Oligosaccharides",
         "packaging": "1*10 Capsules/Strip",
         "indications": "Gut-Kidney metabolism"
     },
@@ -240,8 +254,8 @@ products = [
         "image": "items/Pro-kd45.jpeg",
         "logo": "items/Prodky45.png",
         "description_short": "Pro-KD 45 features a high-potency synbiotic formula combining specific probiotic strains with prebiotic to protect the gut-kidney metabolism.",
-        "description_long": "Pro-KD 45 features a high-potency synbiotic formula combining specific probiotic strains with prebiotic (45 Billion CFU). Specially designed to protect the gut-kidney metabolism, it provides a complete adjuvant therapy for chronic kidney disease and End-Stage Renal Disease (ESRD). By balancing the microbiome, strengthening gut defense, and actively removing systemic nitrogenous wastes through the stools, it dramatically lowers the toxic burden (reducing BUN up to 63% and creatinine up to 43%) to successfully delay progression to ESRD.",
-        "composition": "Streptococcus Thermophilus, Lactobacillus Acidophilus, Bifidobacterium Longum, Bacillus Coagulans, Fructo Oligosaccharides (45 Billion CFU)",
+        "description_long": "Pro-KD 45 / 15 features a balanced synbiotic formula combining specific probiotic strains with prebiotic. Specially designed to protect the gut-kidney metabolism, it provides a complete adjuvant therapy for chronic kidney disease and End-Stage Renal Disease (ESRD). By balancing the microbiome, strengthening gut defense, and actively removing systemic nitrogenous wastes through the stools, it dramatically lowers the toxic burden (reducing BUN up to 63% and creatinine up to 43%) to successfully delay progression to ESRD.",
+        "composition": "Streptococcus Thermophilus, Lactobacillus Acidophilus, Bifidobacterium Longum, Bacillus Coagulans, Fructo Oligosaccharides",
         "packaging": "1*10 Capsules/Strip",
         "indications": "Gut-Kidney metabolism"
     },
@@ -254,7 +268,7 @@ products = [
         "image": "items/aplha-kd.jpeg",
         "logo": "items/Alpha%20KD.png",
         "description_short": "Alpha-KD consists of a highly specialized formula of Alpha Ketoanalogues of Amino Acids indicated for Chronic Kidney Disease (CKD).",
-        "description_long": "Alpha-KD consists of a highly specialized formula of Alpha Ketoanalogues of Amino Acids. Indicated for Chronic Kidney Disease (CKD), it serves as a complete nutritional and metabolic therapy to manage and delay progression to End-Stage Renal Disease (ESRD). When paired with a protein-restricted diet, it preserves essential nutritional status while recycling systemic wastes. By actively reducing the nitrogen load—lowering Blood Urea Nitrogen (BUN), urea, ammonia, creatinine, and harmful acids—it prevents uremic complications, maintains ideal amino acid balance, and effectively delays the initiation of dialysis.",
+        "description_long": "Alpha-KD / Alpha-KD DS consists of a highly specialized formula of Alpha Ketoanalogues of Amino Acids. Indicated for Chronic Kidney Disease (CKD), it serves as a complete nutritional and metabolic therapy to manage and delay progression to End-Stage Renal Disease (ESRD). When paired with a protein-restricted diet, it preserves essential nutritional status while recycling systemic wastes. By actively reducing the nitrogen load—lowering Blood Urea Nitrogen (BUN), urea, ammonia, creatinine, and harmful acids—it prevents uremic complications, maintains ideal amino acid balance, and effectively delays the initiation of dialysis.",
         "composition": "Alpha Ketoanalogue of Amino Acid",
         "packaging": "1*10 Tablets/Strip",
         "indications": "Chronic Kidney Disease"
@@ -268,8 +282,8 @@ products = [
         "image": "items/aplha-kd ds.jpeg",
         "logo": "items/Alpha%20KD%20DS.png",
         "description_short": "Alpha-KD DS consists of a double strength formula of Alpha Ketoanalogues of Amino Acids indicated for advanced Chronic Kidney Disease (CKD).",
-        "description_long": "Alpha-KD DS consists of a double strength specialized formula of Alpha Ketoanalogues of Amino Acids. Indicated for Chronic Kidney Disease (CKD), it serves as a complete nutritional and metabolic therapy to manage and delay progression to End-Stage Renal Disease (ESRD). When paired with a protein-restricted diet, it preserves essential nutritional status while recycling systemic wastes. By actively reducing the nitrogen load—lowering Blood Urea Nitrogen (BUN), urea, ammonia, creatinine, and harmful acids—it prevents uremic complications, maintains ideal amino acid balance, and effectively delays the initiation of dialysis.",
-        "composition": "Alpha Ketoanalogue of Amino Acid (Double Strength)",
+        "description_long": "Alpha-KD / Alpha-KD DS consists of a highly specialized formula of Alpha Ketoanalogues of Amino Acids. Indicated for Chronic Kidney Disease (CKD), it serves as a complete nutritional and metabolic therapy to manage and delay progression to End-Stage Renal Disease (ESRD). When paired with a protein-restricted diet, it preserves essential nutritional status while recycling systemic wastes. By actively reducing the nitrogen load—lowering Blood Urea Nitrogen (BUN), urea, ammonia, creatinine, and harmful acids—it prevents uremic complications, maintains ideal amino acid balance, and effectively delays the initiation of dialysis.",
+        "composition": "Alpha Ketoanalogue of Amino Acid",
         "packaging": "1*10 Tablets/Strip",
         "indications": "Chronic Kidney Disease"
     },
@@ -295,8 +309,8 @@ products = [
         "subtitle": "Kidney Stones Management",
         "image": "items/Stoxlate.jpeg",
         "logo": "items/Stoxlate.png",
-        "description_short": "STOXLATE is a specialized probiotic capsule containing 5 Billion CFUs of specific probiotic strains formulated specifically to reduce the formation of oxalate stones.",
-        "description_long": "STOXLATE is a specialized probiotic capsule containing 5 Billion CFUs of Oxalobacter formigenesis, Lactobacillus acidophilus, Bifidobacterium lactis, and Bacillus coagulans. While formulated specifically to reduce the formation of oxalate stones, it plays a vital protective role in chronic kidney disease and End-Stage Renal Disease (ESRD) management. Since up to 50% of urinary oxalate originates from intestinal absorption, hyperoxaluria represents a major driver of renal calcification and nephron loss. By degrading dietary oxalate within the gut, STOXLATE prevents systemic absorption, reducing the risk of crystalline nephropathy and secondary renal deterioration.",
+        "description_short": "STOXLATE is a specialized probiotic capsule containing 5 Billion CFUs of Oxalobacter formigenesis, Lactobacillus acidophilus, Bifidobacterium lactis, and Bacillus coagulans.",
+        "description_long": "STOXLATE is a specialized probiotic capsule containing 5 Billion CFUs of Oxalobacter formigenesis, Lactobacillus acidophilus, Bifidobacterium lactis, and Bacillus coagulans. While formulated specifically to reduce the formation of oxalate stones. Since up to 50% of urinary oxalate originates from intestinal absorption, hyperoxaluria represents a major driver of renal calcification and nephron loss. By degrading dietary oxalate within the gut, STOXLATE prevents systemic absorption, reducing the risk of crystalline nephropathy and secondary renal deterioration.",
         "composition": "Oxalobacter Formingenesis + Lactobacillus Acidophilus + Bifidobacterium Lactis + Bacillus Coagulans",
         "packaging": "1*10 Capsules/Strip",
         "indications": "Kidney Stones"
@@ -309,9 +323,9 @@ products = [
         "subtitle": "Nephroprotective Formulation",
         "image": "items/acytron-forte.jpeg",
         "logo": "items/Acytron%20Forte.png",
-        "description_short": "Advanced kidney support formula with NAC, Taurine, Vitamin B6 & Folic Acid, developed to help protect renal function, reduce oxidative stress, and support patients with Dialysis, Albuminuria, and Diabetic Kidney Disease.",
-        "description_long": "Advanced kidney support formula with NAC, Taurine, Vitamin B6 & Folic Acid, developed to help protect renal function, reduce oxidative stress, and support patients with Dialysis, Albuminuria, and Diabetic Kidney Disease.",
-        "composition": "N-acetyl L-cysteine 150 mg + Taurine 500 mg + Vitamin B6 2.4 mg + Folic Acid 200 mcg",
+        "description_short": "Acytron-Forte is a comprehensive nephroprotective formula combining N-acetyl L-cysteine (NAC), Taurine, Vitamin B6, and Folic Acid.",
+        "description_long": "Acytron-Forte is a comprehensive nephroprotective formula combining N-acetyl L-cysteine (NAC), Taurine, Vitamin B6, and Folic Acid. Indicated for patients managing Dialysis, Albuminuria, and Diabetic Kidney Disease, it provides a complete metabolic therapy to delay progression toward End-Stage Renal Disease (ESRD). By supporting cellular protection and antioxidant balance, the formula reduces urinary albumin excretion, improves insulin sensitivity, enhances microcirculation, and defends critical renal structures against progressive, irreversible oxidative damage.",
+        "composition": "N-acetyl L-cysteine + Taurine + Vitamin B6 (Pyridoxine HCL) + Folic Acid",
         "packaging": "1*10 Tablets/Strip",
         "indications": "Dialysis, Albuminuria & Diabetic Kidney Disease"
     },
@@ -355,7 +369,7 @@ products = [
         "description_long": "Foliguard is a scientifically balanced fertility-support formulation designed to address metabolic, hormonal, oxidative, and reproductive disturbances commonly associated with female infertility and PCOS-related complications. CurePCOS helps improve insulin sensitivity and ovarian function, supports DNA synthesis and ovulatory health. It also acts as a antioxidant and endocrine support, helping improve oocyte quality, hormonal balance, follicular development, and reproductive wellness. Together, the formulation offers comprehensive support for ovulation, fertility potential, metabolic regulation, and healthy reproductive function.",
         "composition": "Myo-Inositol + D-Chiro-Inositol + L-Methylfolate + Calcium + Vitamin D3 + Melatonin with Zinc & Selenium",
         "packaging": "1*10 Tablets",
-        "indications": "PCOS complications"
+        "indications": "PCOS complication"
     },
     {
         "filename": "product-embry-s.html",
@@ -401,8 +415,8 @@ def replace_content(html, product):
     info_desc_regex = r'<h3 class="text-lg font-bold text-gray-900 mb-4">Description</h3>\s*<p class="text-gray-600 leading-relaxed">.*?</p>'
     html = re.sub(info_desc_regex, f'<h3 class="text-lg font-bold text-gray-900 mb-4">Description</h3>\n                        <p class="text-gray-600 leading-relaxed">\n                            {product["description_long"]}\n                        </p>', html, flags=re.DOTALL)
     
-    # Key Benefits (replace with Composition and Packaging)
-    benefits_regex = r'<h3 class="text-lg font-bold text-gray-900 mb-4">Key Benefits</h3>\s*<ul class="space-y-3">.*?</ul>'
+    # Key Benefits / Composition & Packaging
+    benefits_regex = r'(<h3 class="text-lg font-bold text-gray-900 mb-4">(?:Key Benefits|Composition &amp; Packaging|Composition & Packaging)</h3>).*?(?=<div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">\s*<h3 class="text-lg font-bold text-gray-900 mb-4">Usage)'
     benefits_replacement = f"""<h3 class="text-lg font-bold text-gray-900 mb-4">Composition & Packaging</h3>
                         <div class="space-y-4">
                             <div>
@@ -413,7 +427,9 @@ def replace_content(html, product):
                                 <h4 class="font-semibold text-gray-800">Packaging:</h4>
                                 <p class="text-gray-600 mt-1">{product["packaging"]}</p>
                             </div>
-                        </div>"""
+                        </div>
+                    </div>
+                    """
     html = re.sub(benefits_regex, benefits_replacement, html, flags=re.DOTALL)
     
     # Usage
