@@ -15,10 +15,10 @@ products = [
         "subtitle": "Male Sexual Dysfunction & Infertility",
         "image": "items/himract-pro.jpeg",
         "description_short": "A synergistic combination of HIMRACT PRO works through a multi-targeted mechanism designed to address the vascular, hormonal, neurological, and psychological components of male sexual dysfunction.",
-        "description_long": "A synergistic combination of HIMRACT PRO works through a multi-targeted mechanism designed to address the vascular, hormonal, neurological, and psychological components of male sexual dysfunction. It enhances nitric oxide synthesis, promoting vasodilation, improved penile blood flow, and erection, boosts endogenous testosterone production, libido, stamina, and sexual performance. Improving microcirculation and cavernosal blood supply. And, modulates stress-related neurotransmitter imbalance, improving mood and sexual confidence. Himract Pro supports hormonal balance, reproductive health, energy metabolism, and overall sexual wellness.",
+        "description_long": "A synergistic combination of HIMRACT PRO works through a multi-targeted mechanism designed to address the vascular, hormonal, neurological, and psychological components of male sexual dysfunction. It enhances nitric oxide synthesis, promoting vasodilation, improved penile blood flow, and erection, boosts endogenous testosterone production, libido, stamina, and sexual performance. Improving microcirculation and cavernosal blood supply. And, modulates stress-related neurotransmitter imbalance, improving mood and sexual confidence. Himract Pro supports Erection, Rigidity, Duration, Orgasm, Satisfaction in Male supperfing from Sexual Dysfunction..",
         "composition": "L-arginine + Tribulus Terrestris + Fenugreek Extract + Hypericum Perforatum + Mucuna Pruriens + Gingko Biloba + Zinc + Vitamin B6",
-        "packaging": "One Sachet",
-        "indications": "Low Libido, Erectile Dysfunction, Premature Ejaculation, Anorgasmia, Spermatogenesis, Oligospermia, DNA Fragmentation"
+        "packaging": "One Sachet of 5 gms",
+        "indications": "Low Libido, Erectile Dysfunction, Premature Ejaculation, Anorgasmia"
     },
     {
         "filename": "product-himract-gold.html",
@@ -28,10 +28,10 @@ products = [
         "subtitle": "Advanced Male Sexual Performance",
         "image": "items/Himract Gold med.png",
         "description_short": "A scientifically designed multi-mechanistic formulation that supports male sexual performance, vitality, and reproductive wellness through vascular, hormonal, neurological, and metabolic pathways.",
-        "description_long": "A scientifically designed multi-mechanistic formulation that supports male sexual performance, vitality, and reproductive wellness through vascular, hormonal, neurological, and metabolic pathways. It enhances nitric oxide production and blood flow, supports endothelial function and antioxidant protection. Boost testosterone balance, libido, stamina, mood, and orgasmic response. Himract Gold also improves nutrient absorption, making the formulation a comprehensive support therapy for male sexual dysfunction and performance enhancement, with Power of 12 solid components acting as an upgradation to Himract Pro with extra Testosterone Boosters, extra Neurotransmitters, & Vaodilators.",
+        "description_long": "A scientifically designed multi-mechanistic formulation that supports male sexual performance, vitality, and reproductive wellness through vascular, hormonal, neurological, and metabolic pathways. It enhances nitric oxide production and blood flow, supports endothelial function and antioxidant protection. Boost testosterone balance, libido, stamina, mood, and orgasmic response. Himract Gold also improves nutrient absorption, making the formulation a comprehensive support therapy for male sexual dysfunction and performance enhancement, with Power of 12 solid components acting as the most upgraded product in Male Sexual Dysfunction.",
         "composition": "L-arginine + L-citrulline + Bioperine (Black Pepper Exxtract) + Alga Ecklonia Bicyclis + Tribulus Terrestris + Pine Bark Extract + Fenugreek Extract + Hypericum Perforatum + Mucuna Pruriens + Gingko Biloba + Zinc + Vitamin D2 + Yohimbe Bark Extract",
         "packaging": "1*15 Tablets/ Strip",
-        "indications": "Management of type 2 diabetes mellitus"
+        "indications": "Low Libido, Erectile Dysfunction, Premature Ejaculation, Anorgasmia"
     },
     {
         "filename": "product-androwin.html",
@@ -41,10 +41,10 @@ products = [
         "subtitle": "Male Infertility & IVF Support",
         "image": "items/androwin.jpeg",
         "description_short": "A scientifically formulated antioxidant and mitochondrial support therapy designed to improve male fertility by enhancing sperm energy metabolism, motility, and cellular protection.",
-        "description_long": "ANDROWIN introduces a premier male fertility formula combining Ubiquinol Acetate (Reduced CoQ10), L-Carnitine L-Tartrate, Astaxanthin, Zinc Sulphate, and Lycopene. Indicated as a foundational intervention prior to the IVF process, it offers complete preparatory therapy by simultaneously tackling oxidative stress and cellular energy gaps. By preserving DNA integrity, improving sperm morphology, and boosting motility, the formula optimizes sperm parameters from every angle, directly increasing fertilization success rates and maximizing healthy embryo development during assisted reproductive procedures.",
+        "description_long": "A scientifically formulated antioxidant and mitochondrial support therapy designed to improve male fertility by enhancing sperm energy metabolism, motility, and cellular protection. Androwin improves mitochondrial function and ATP production, supporting sperm vitality and motility. It  provides potent antioxidant protection against oxidative stress and DNA damage, while supports testosterone balance, spermatogenesis, and sperm quality. Together, the formulation offers comprehensive support for sperm count, motility, morphology, and overall reproductive health in male infertility management.",
         "composition": "Ubiquinol Acetate (Reduced CoQ10) + L-Carnitine L-Tartrate 10% + Zinc Sulphate Monohydrate + Lycopene 6%",
         "packaging": "1 x 10 Cap/ strip",
-        "indications": "Male Infertility & IVF Procedures"
+        "indications": "the management of Male Infertility"
     },
     {
         "filename": "product-erectlong.html",
