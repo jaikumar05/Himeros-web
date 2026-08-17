@@ -26,7 +26,7 @@ products = [
         "name": "Himract Gold",
         "category_badges": '<span class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Andrology</span>\n                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-semibold uppercase tracking-wider rounded-full">Sexology</span>',
         "subtitle": "Advanced Male Sexual Performance",
-        "image": "items/himract.jpeg",
+        "image": "items/Himract Gold med.png",
         "description_short": "A scientifically designed multi-mechanistic formulation that supports male sexual performance, vitality, and reproductive wellness through vascular, hormonal, neurological, and metabolic pathways.",
         "description_long": "A scientifically designed multi-mechanistic formulation that supports male sexual performance, vitality, and reproductive wellness through vascular, hormonal, neurological, and metabolic pathways. It enhances nitric oxide production and blood flow, supports endothelial function and antioxidant protection. Boost testosterone balance, libido, stamina, mood, and orgasmic response. Himract Gold also improves nutrient absorption, making the formulation a comprehensive support therapy for male sexual dysfunction and performance enhancement, with Power of 12 solid components acting as an upgradation to Himract Pro with extra Testosterone Boosters, extra Neurotransmitters, & Vaodilators.",
         "composition": "L-arginine + L-citrulline + Bioperine (Black Pepper Exxtract) + Alga Ecklonia Bicyclis + Tribulus Terrestris + Pine Bark Extract + Fenugreek Extract + Hypericum Perforatum + Mucuna Pruriens + Gingko Biloba + Zinc + Vitamin D2 + Yohimbe Bark Extract",
