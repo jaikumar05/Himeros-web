@@ -1,0 +1,302 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career | Himeros Pharma</title>
+    <meta name="description" content="Join the Himeros Pharma team. Explore career opportunities in pharmaceutical innovation, research, and healthcare.">
+    <script src="https://cdn.tailwindcss.com?v=2"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 800: '#1e3a8a', 900: '#172554' },
+                        green: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'], 'playfair': ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, #22c55e);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active-link::after { width: 100%; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+
+        /* Page Transition */
+        .page-transition-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999; pointer-events: none;
+            background: #ffffff; opacity: 1;
+            animation: overlayFadeOut 0.4s ease 0.2s forwards;
+        }
+        @keyframes overlayFadeOut { from { opacity: 1; } to { opacity: 0; pointer-events: none; } }
+
+        .footer-logo-wrap {
+            background: white; border-radius: 0.5rem;
+            padding: 0.3rem 0.6rem; display: inline-flex;
+        }
+
+        /* Hero gradient animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8, #0f766e, #15803d);
+            background-size: 300% 300%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        /* Coming Soon pulse */
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.08); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        .pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
+
+        @keyframes float-up {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim { animation: float-up 4s ease-in-out infinite; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+    <div class="page-transition-overlay" id="pageTransition"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="flex items-center flex-shrink-0">
+                    <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23"
+                        alt="Himeros Pharma Logo" class="h-16 lg:h-[72px] w-auto object-contain">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Home</a>
+                    <a href="about.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">About Us</a>
+                    <a href="segment.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Segment</a>
+                    <a href="products.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Products</a>
+                    <a href="blog.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Blog</a>
+                    <a href="books.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Books</a>
+                    <a href="gallery.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Gallery</a>
+                    <a href="contact.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Contact Us</a>
+                    <a href="career.html" class="nav-link active-link relative text-sm font-medium text-brand-600 transition-colors">Career</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="menuToggle"
+                        onclick="document.getElementById('mobileMenu').classList.add('open');document.getElementById('menuOverlay').classList.remove('hidden');document.body.style.overflow='hidden';"
+                        class="md:hidden p-2 text-gray-600 hover:text-brand-600 transition-colors">
+                        <span class="block w-6 h-0.5 bg-gray-700 rounded mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-700 rounded mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-700 rounded"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23"
+                    alt="Himeros Pharma Logo" class="h-14 w-auto object-contain">
+                <button id="menuClose"
+                    onclick="document.getElementById('mobileMenu').classList.remove('open');document.getElementById('menuOverlay').classList.add('hidden');document.body.style.overflow='';"
+                    class="p-2 text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="flex flex-col gap-1">
+                <a href="index.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Home</a>
+                <a href="about.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">About Us</a>
+                <a href="segment.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Segment</a>
+                <a href="products.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Products</a>
+                <a href="blog.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Blog</a>
+                <a href="books.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Books</a>
+                <a href="gallery.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Gallery</a>
+                <a href="contact.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Contact Us</a>
+                <a href="career.html" class="mobile-nav-link px-4 py-3 text-brand-600 bg-brand-50 rounded-lg transition-colors font-semibold">Career</a>
+            </div>
+        </div>
+    </div>
+    <div id="menuOverlay"
+        onclick="document.getElementById('mobileMenu').classList.remove('open');this.classList.add('hidden');document.body.style.overflow='';"
+        class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <!-- Career Hero Section -->
+    <section class="hero-gradient relative overflow-hidden py-24 lg:py-36">
+        <!-- Decorative circles -->
+        <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-white/5 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-white/5 blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 mb-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2.5">
+                <i data-lucide="briefcase" class="w-4 h-4 text-green-300"></i>
+                <span class="text-white/90 text-sm font-medium tracking-wide">Join Our Team</span>
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+                Build Your Career at<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">Himeros Pharma</span>
+            </h1>
+            <p class="text-white/75 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+                We're on a mission to transform pharmaceutical care. Exciting opportunities are on the way — be the first to know when we open positions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-24 lg:py-36 bg-white">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <!-- Animated icon -->
+            <div class="flex justify-center mb-10">
+                <div class="relative">
+                    <div class="w-32 h-32 rounded-full bg-brand-50 pulse-ring flex items-center justify-center">
+                        <div class="w-24 h-24 rounded-full bg-brand-100 flex items-center justify-center float-anim">
+                            <i data-lucide="hard-hat" class="w-12 h-12 text-brand-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 mb-4 justify-center">
+                <div class="w-8 h-0.5 bg-green-500"></div>
+                <span class="text-xs font-semibold text-green-600 uppercase tracking-widest">Coming Soon</span>
+                <div class="w-8 h-0.5 bg-green-500"></div>
+            </div>
+
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-5">
+                We're Working on Something Great
+            </h2>
+            <p class="text-gray-500 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+                Our Careers section is currently under construction. We'll soon be sharing open roles across Sales, Research, Operations, and more. Stay tuned!
+            </p>
+
+            <!-- CTA -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html"
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-green-500 text-white font-semibold px-8 py-3.5 rounded-full hover:shadow-lg hover:shadow-brand-500/30 transition-all duration-300">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    Send Us Your Resume
+                </a>
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 font-semibold px-8 py-3.5 rounded-full hover:bg-brand-600 hover:text-white transition-all duration-300">
+                    <i data-lucide="home" class="w-4 h-4"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="footer-logo-wrap mb-4">
+                        <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f27bf983575b3a7a94c23"
+                            alt="Himeros Pharma" class="h-12 w-auto object-contain">
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Advancing pharmaceutical science for better patient outcomes across specialties.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Products</a></li>
+                        <li><a href="blog.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Blog</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Contact Us</a></li>
+                        <li><a href="career.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Career</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Segments</h4>
+                    <ul class="space-y-2">
+                        <li><a href="segment-andrology.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Andrology / Sexology</a></li>
+                        <li><a href="segment-nephrology.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Nephrology / Urology</a></li>
+                        <li><a href="segment-gynecology.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">IVF / Gynecology</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-400 text-sm">Himeros Pharma, India</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                            <a href="mailto:info@himerospharma.com" class="text-gray-400 text-sm hover:text-green-400 transition-colors">info@himerospharma.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2025 Himeros Pharma. All rights reserved.</p>
+                <p class="text-gray-600 text-xs">Crafted with care for healthcare professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        setTimeout(() => lucide.createIcons(), 200);
+
+        // Page Transition
+        (function () {
+            var overlay = document.getElementById('pageTransition');
+            window.addEventListener('pageshow', function () {
+                if (overlay) { overlay.style.animation = ''; overlay.style.transition = ''; overlay.style.opacity = ''; }
+            });
+            document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var href = this.getAttribute('href');
+                    if (href.startsWith('http') && !href.includes(window.location.host)) return;
+                    e.preventDefault();
+                    if (overlay) {
+                        overlay.style.animation = 'none';
+                        void overlay.offsetHeight;
+                        overlay.style.transition = 'opacity 0.3s ease';
+                        overlay.style.opacity = '1';
+                        setTimeout(function () { window.location.href = href; }, 400);
+                    } else { window.location.href = href; }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
