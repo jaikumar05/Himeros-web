@@ -1,0 +1,777 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Talent Community | Career | Himeros Pharma</title>
+    <meta name="description" content="Apply to join the Himeros Pharma Talent Community. Share your background, work experience, and preferences — we'll be in touch when a matching opportunity opens.">
+    <script src="https://cdn.tailwindcss.com?v=2"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 800: '#1e3a8a', 900: '#172554' },
+                        green: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'], 'playfair': ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, #22c55e);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active-link::after { width: 100%; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+
+        /* Page Transition */
+        .page-transition-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999; pointer-events: none;
+            background: #ffffff; opacity: 1;
+            animation: overlayFadeOut 0.4s ease 0.2s forwards;
+        }
+        @keyframes overlayFadeOut { from { opacity: 1; } to { opacity: 0; pointer-events: none; } }
+
+        body > *:not(.page-transition-overlay):not(nav):not(#mobileMenu):not(#menuOverlay) {
+            animation: contentFadeIn 0.5s ease 0.3s both;
+        }
+        @keyframes contentFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Hero gradient (same as career.html) */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8, #0f766e, #15803d);
+            background-size: 300% 300%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        /* Form helpers */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+            background: #ffffff;
+            color: #1f2937;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .form-input::placeholder { color: #9ca3af; }
+        textarea.form-input { resize: vertical; min-height: 96px; }
+        select.form-input { color: #4b5563; }
+        select.form-input.has-value { color: #1f2937; }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.375rem;
+        }
+        .form-hint { font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem; }
+
+        .workex-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1.4fr 1fr 1fr auto;
+            gap: 0.75rem;
+            align-items: end;
+        }
+        @media (max-width: 768px) {
+            .workex-row { grid-template-columns: 1fr 1fr; }
+        }
+
+        .remove-workex {
+            width: 2.5rem; height: 2.5rem;
+            display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 0.5rem; border: 1px solid #fecaca;
+            background: #fef2f2; color: #b91c1c;
+            transition: all 0.2s ease;
+        }
+        .remove-workex:hover { background: #fee2e2; }
+
+        /* File drop zone */
+        .file-drop {
+            border: 2px dashed #d1d5db;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .file-drop:hover, .file-drop.dragover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+        .file-drop .file-name { font-size: 0.875rem; color: #2563eb; font-weight: 500; margin-top: 0.5rem; }
+
+        /* Radio chips */
+        .radio-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .radio-chip:hover { border-color: #2563eb; color: #2563eb; }
+        .radio-chip input { display: none; }
+        .radio-chip input:checked + span,
+        .radio-chip:has(input:checked) {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Success message */
+        .form-success {
+            display: none;
+            padding: 1rem 1.25rem;
+            border-radius: 0.75rem;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .form-success.show { display: flex; align-items: center; gap: 0.5rem; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+    <div class="page-transition-overlay" id="pageTransition"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="flex items-center flex-shrink-0">
+                    <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f37bf983575b3a7a94c23"
+                        alt="Himeros Pharma Logo" class="h-16 lg:h-[72px] w-auto object-contain">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Home</a>
+                    <a href="about.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">About Us</a>
+                    <a href="segment.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Segment</a>
+                    <a href="products.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Products</a>
+                    <a href="blog.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Blog</a>
+                    <a href="books.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Books</a>
+                    <a href="gallery.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Gallery</a>
+
+                    <a href="career.html" class="nav-link active-link relative text-sm font-medium text-brand-600 transition-colors">Career</a>
+<a href="contact.html" class="nav-link relative text-sm font-medium text-gray-700 hover:text-brand-600 transition-colors">Contact Us</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="menuToggle"
+                        onclick="document.getElementById('mobileMenu').classList.add('open');document.getElementById('menuOverlay').classList.remove('hidden');document.body.style.overflow='hidden';"
+                        class="md:hidden p-2 text-gray-600 hover:text-brand-600 transition-colors">
+                        <span class="block w-6 h-0.5 bg-gray-700 rounded mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-700 rounded mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-700 rounded"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f37bf983575b3a7a94c23"
+                    alt="Himeros Pharma Logo" class="h-14 w-auto object-contain">
+                <button id="menuClose"
+                    onclick="document.getElementById('mobileMenu').classList.remove('open');document.getElementById('menuOverlay').classList.add('hidden');document.body.style.overflow='';"
+                    class="p-2 text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="flex flex-col gap-1">
+                <a href="index.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Home</a>
+                <a href="about.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">About Us</a>
+                <a href="segment.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Segment</a>
+                <a href="products.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Products</a>
+                <a href="blog.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Blog</a>
+                <a href="books.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Books</a>
+                <a href="gallery.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Gallery</a>
+
+                <a href="career.html" class="mobile-nav-link px-4 py-3 text-brand-600 bg-brand-50 rounded-lg transition-colors font-semibold">Career</a>
+<a href="contact.html" class="mobile-nav-link px-4 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors font-medium">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div id="menuOverlay"
+        onclick="document.getElementById('mobileMenu').classList.remove('open');this.classList.add('hidden');document.body.style.overflow='';"
+        class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <!-- Page Header / Hero -->
+    <section class="hero-gradient relative overflow-hidden py-16 lg:py-20">
+        <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-white/5 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-white/5 blur-3xl"></div>
+        <div class="relative max-w-4xl mx-auto px-4 text-center">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center justify-center gap-2 text-white/70 text-xs font-medium tracking-widest uppercase mb-6">
+                <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                <a href="career.html" class="hover:text-white transition-colors">Career</a>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                <span class="text-white">Apply</span>
+            </nav>
+            <div class="inline-flex items-center gap-2 mb-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2.5">
+                <i data-lucide="users" class="w-4 h-4 text-green-300"></i>
+                <span class="text-white/90 text-sm font-medium tracking-wide">Talent Community</span>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                Join Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">Talent Community</span>
+            </h1>
+            <p class="text-white/80 text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+                Tell us about yourself. We'll get in touch when an opportunity that matches your profile opens up at Himeros Pharma.
+            </p>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl border border-gray-100 shadow-lg p-6 sm:p-10">
+
+                <!-- Success message (hidden until submit) -->
+                <div id="formSuccess" class="form-success mb-8" role="status" aria-live="polite">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 flex-shrink-0"></i>
+                    <span>Thank you — your profile has been submitted. Our talent team will review your details and reach out when a matching opportunity opens.</span>
+                </div>
+
+                <form id="talentForm" class="space-y-10" novalidate>
+
+                    <!-- Section: Personal Details -->
+                    <fieldset>
+                        <legend class="flex items-center gap-3 mb-6">
+                            <span class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center">
+                                <i data-lucide="user-round" class="w-5 h-5 text-brand-600"></i>
+                            </span>
+                            <span class="text-lg font-bold text-gray-900">Personal Details</span>
+                        </legend>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="form-label" for="firstName">First Name <span class="text-red-500">*</span></label>
+                                <input id="firstName" name="firstName" type="text" required class="form-input" placeholder="Your first name">
+                            </div>
+                            <div>
+                                <label class="form-label" for="lastName">Last Name <span class="text-red-500">*</span></label>
+                                <input id="lastName" name="lastName" type="text" required class="form-input" placeholder="Your last name">
+                            </div>
+                            <div>
+                                <label class="form-label" for="mobile">Mobile No. <span class="text-red-500">*</span></label>
+                                <input id="mobile" name="mobile" type="tel" required pattern="[0-9+\-\s()]{7,}" class="form-input" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div>
+                                <label class="form-label" for="email">Mail ID <span class="text-red-500">*</span></label>
+                                <input id="email" name="email" type="email" required class="form-input" placeholder="your@email.com">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="form-label" for="address">Permanent Address <span class="text-red-500">*</span></label>
+                                <textarea id="address" name="address" required rows="2" class="form-input" placeholder="House / Street, City, State, PIN"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Section: Education -->
+                    <fieldset>
+                        <legend class="flex items-center gap-3 mb-6">
+                            <span class="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center">
+                                <i data-lucide="graduation-cap" class="w-5 h-5 text-green-600"></i>
+                            </span>
+                            <span class="text-lg font-bold text-gray-900">Education</span>
+                        </legend>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="form-label" for="qualification">Highest Qualification <span class="text-red-500">*</span></label>
+                                <select id="qualification" name="qualification" required class="form-input">
+                                    <option value="">Select your highest qualification</option>
+                                    <option>B.Pharm</option>
+                                    <option>M.Pharm</option>
+                                    <option>PhD (Pharmacy)</option>
+                                    <option>MBBS</option>
+                                    <option>MD</option>
+                                    <option>MS</option>
+                                    <option>B.Sc (Life Sciences)</option>
+                                    <option>M.Sc (Life Sciences)</option>
+                                    <option>BBA / MBA</option>
+                                    <option>CA / CS / ICWA</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="university">University <span class="text-red-500">*</span></label>
+                                <input id="university" name="university" type="text" required class="form-input" placeholder="University / Institute name">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Section: Work Experience -->
+                    <fieldset>
+                        <legend class="flex items-center gap-3 mb-6">
+                            <span class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center">
+                                <i data-lucide="briefcase" class="w-5 h-5 text-brand-600"></i>
+                            </span>
+                            <span class="text-lg font-bold text-gray-900">Work Experience</span>
+                        </legend>
+
+                        <div class="mb-5">
+                            <label class="form-label" for="totalWorkEx">Total Work Experience (in months) <span class="text-red-500">*</span></label>
+                            <input id="totalWorkEx" name="totalWorkEx" type="number" required min="0" max="600" class="form-input" placeholder="e.g. 24">
+                            <p class="form-hint">Enter 0 if you are a fresher.</p>
+                        </div>
+
+                        <div class="mb-3 flex items-center justify-between">
+                            <p class="text-sm font-medium text-gray-700">Work Experience Details</p>
+                            <button type="button" id="addWorkEx"
+                                class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-green-600 transition-colors">
+                                <i data-lucide="plus-circle" class="w-4 h-4"></i> Add another role
+                            </button>
+                        </div>
+
+                        <div id="workexList" class="space-y-4">
+                            <!-- WorkEx row template, cloned by JS -->
+                            <div class="workex-row workex-item bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                <div>
+                                    <label class="form-label">Position <span class="text-red-500">*</span></label>
+                                    <input type="text" name="workex_position[]" required class="form-input" placeholder="e.g. Sales Executive">
+                                </div>
+                                <div>
+                                    <label class="form-label">Company Name <span class="text-red-500">*</span></label>
+                                    <input type="text" name="workex_company[]" required class="form-input" placeholder="Company / Organization">
+                                </div>
+                                <div>
+                                    <label class="form-label">Year of Joining <span class="text-red-500">*</span></label>
+                                    <input type="number" name="workex_join[]" required min="1950" max="2099" class="form-input" placeholder="YYYY">
+                                </div>
+                                <div>
+                                    <label class="form-label">Year of Ending <span class="text-red-500">*</span></label>
+                                    <input type="number" name="workex_end[]" required min="1950" max="2099" class="form-input" placeholder="YYYY">
+                                </div>
+                                <button type="button" class="remove-workex" title="Remove this row" aria-label="Remove row">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="form-hint">You can add unlimited rows. Click <strong>Add another role</strong> to include more positions.</p>
+                    </fieldset>
+
+                    <!-- Section: Preferences -->
+                    <fieldset>
+                        <legend class="flex items-center gap-3 mb-6">
+                            <span class="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center">
+                                <i data-lucide="settings-2" class="w-5 h-5 text-green-600"></i>
+                            </span>
+                            <span class="text-lg font-bold text-gray-900">Preferences</span>
+                        </legend>
+
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="form-label" for="noticePeriod">Notice Period <span class="text-red-500">*</span></label>
+                                <select id="noticePeriod" name="noticePeriod" required class="form-input">
+                                    <option value="">Select notice period</option>
+                                    <option>Immediate</option>
+                                    <option>15 days</option>
+                                    <option>30 days</option>
+                                    <option>60 days</option>
+                                    <option>90 days</option>
+                                    <option>Currently serving notice</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="currentCtc">Current CTC (in LPA) <span class="text-red-500">*</span></label>
+                                <input id="currentCtc" name="currentCtc" type="number" required min="0" step="0.1" class="form-input" placeholder="e.g. 6.5">
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <label class="form-label">Location Preference (up to 3) <span class="text-red-500">*</span></label>
+                            <div class="grid sm:grid-cols-3 gap-3" id="locationPrefs">
+                                <select name="locationPref1" required class="form-input">
+                                    <option value="">1st preference</option>
+                                    <option>Jaipur</option>
+                                    <option>Delhi NCR</option>
+                                    <option>Mumbai</option>
+                                    <option>Bengaluru</option>
+                                    <option>Hyderabad</option>
+                                    <option>Chennai</option>
+                                    <option>Kolkata</option>
+                                    <option>Ahmedabad</option>
+                                    <option>Pune</option>
+                                    <option>Lucknow</option>
+                                    <option>Chandigarh</option>
+                                    <option>Indore</option>
+                                    <option>Any location in India</option>
+                                </select>
+                                <select name="locationPref2" class="form-input">
+                                    <option value="">2nd preference (optional)</option>
+                                    <option>Jaipur</option>
+                                    <option>Delhi NCR</option>
+                                    <option>Mumbai</option>
+                                    <option>Bengaluru</option>
+                                    <option>Hyderabad</option>
+                                    <option>Chennai</option>
+                                    <option>Kolkata</option>
+                                    <option>Ahmedabad</option>
+                                    <option>Pune</option>
+                                    <option>Lucknow</option>
+                                    <option>Chandigarh</option>
+                                    <option>Indore</option>
+                                    <option>Any location in India</option>
+                                </select>
+                                <select name="locationPref3" class="form-input">
+                                    <option value="">3rd preference (optional)</option>
+                                    <option>Jaipur</option>
+                                    <option>Delhi NCR</option>
+                                    <option>Mumbai</option>
+                                    <option>Bengaluru</option>
+                                    <option>Hyderabad</option>
+                                    <option>Chennai</option>
+                                    <option>Kolkata</option>
+                                    <option>Ahmedabad</option>
+                                    <option>Pune</option>
+                                    <option>Lucknow</option>
+                                    <option>Chandigarh</option>
+                                    <option>Indore</option>
+                                    <option>Any location in India</option>
+                                </select>
+                            </div>
+                            <p class="form-hint">Pick up to three cities, in order of preference.</p>
+                        </div>
+
+                        <div class="mt-5">
+                            <label class="form-label">Ready to Relocate? <span class="text-red-500">*</span></label>
+                            <div class="flex flex-wrap gap-3">
+                                <label class="radio-chip">
+                                    <input type="radio" name="relocate" value="Yes" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-chip">
+                                    <input type="radio" name="relocate" value="No">
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Section: CV Upload -->
+                    <fieldset>
+                        <legend class="flex items-center gap-3 mb-6">
+                            <span class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-brand-600"></i>
+                            </span>
+                            <span class="text-lg font-bold text-gray-900">CV / Resume</span>
+                        </legend>
+                        <label class="file-drop block" id="fileDrop">
+                            <input type="file" id="cvUpload" name="cvUpload" accept=".pdf,.doc,.docx" class="sr-only">
+                            <i data-lucide="upload-cloud" class="w-10 h-10 mx-auto text-brand-500"></i>
+                            <p class="mt-2 text-sm font-medium text-gray-800">Click to upload or drag and drop</p>
+                            <p class="text-xs text-gray-500">PDF, DOC, DOCX (max 5 MB)</p>
+                            <p class="file-name" id="fileName"></p>
+                        </label>
+                    </fieldset>
+
+                    <!-- Submit -->
+                    <div class="pt-2 border-t border-gray-100 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            By submitting this form, you consent to Himeros Pharma storing and processing your information for recruitment purposes.
+                        </p>
+                        <button type="submit"
+                            class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-600 to-green-500 text-white font-semibold px-8 py-3.5 rounded-full hover:shadow-lg hover:shadow-brand-500/30 transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="send" class="w-4 h-4"></i> Submit Application
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="footer-logo-wrap mb-4">
+                        <img src="https://z-cdn-media.chatglm.cn/files/1a3ab43b-4646-4d32-8425-01926c3bf57e.png?auth_key=1881243185-e88cca88e5ab46839f86ff477a1e81dd-0-f6d45976647f37bf983575b3a7a94c23"
+                            alt="Himeros Pharma" class="h-12 w-auto object-contain">
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Advancing pharmaceutical science for better patient outcomes across specialties.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Products</a></li>
+                        <li><a href="blog.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Blog</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Gallery</a></li>
+
+                        <li><a href="career.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Career</a></li>
+<li><a href="contact.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Segments</h4>
+                    <ul class="space-y-2">
+                        <li><a href="segment-andrology.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Andrology / Sexology</a></li>
+                        <li><a href="segment-nephrology.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">Nephrology / Urology</a></li>
+                        <li><a href="segment-gynecology.html" class="text-gray-400 text-sm hover:text-green-400 transition-colors">IVF / Gynecology</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-400 text-sm">Himeros Pharma, India</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                            <a href="mailto:info@himerospharma.com" class="text-gray-400 text-sm hover:text-green-400 transition-colors">info@himerospharma.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2025 Himeros Pharma. All rights reserved.</p>
+                <p class="text-gray-600 text-xs">Crafted with care for healthcare professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-brand-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-brand-700 hover:shadow-xl z-50">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <script>
+        setTimeout(() => lucide.createIcons(), 200);
+
+        // Page Transition (mirrors career.html)
+        (function () {
+            var overlay = document.getElementById('pageTransition');
+            window.addEventListener('pageshow', function () {
+                if (overlay) { overlay.style.animation = ''; overlay.style.transition = ''; overlay.style.opacity = ''; }
+            });
+            document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var href = this.getAttribute('href');
+                    if (href.startsWith('http') && !href.includes(window.location.host)) return;
+                    e.preventDefault();
+                    if (overlay) {
+                        overlay.style.animation = 'none';
+                        void overlay.offsetHeight;
+                        overlay.style.transition = 'opacity 0.3s ease';
+                        overlay.style.opacity = '1';
+                        setTimeout(function () { window.location.href = href; }, 400);
+                    } else { window.location.href = href; }
+                });
+            });
+        })();
+
+        // Mobile menu toggle
+        (function () {
+            var toggle = document.getElementById('menuToggle');
+            var close = document.getElementById('menuClose');
+            var menu = document.getElementById('mobileMenu');
+            var overlay = document.getElementById('menuOverlay');
+            var mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            function open() { menu.classList.add('open'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+            function closeMenu() { menu.classList.remove('open'); overlay.classList.add('hidden'); document.body.style.overflow = ''; }
+            if (toggle) toggle.addEventListener('click', open);
+            if (close) close.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(function (l) { l.addEventListener('click', closeMenu); });
+        })();
+
+        // Back to top
+        (function () {
+            var btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 400) { btn.classList.remove('opacity-0'); btn.classList.add('opacity-100'); btn.classList.remove('pointer-events-none'); }
+                else { btn.classList.add('opacity-0'); btn.classList.remove('opacity-100'); btn.classList.add('pointer-events-none'); }
+            });
+            btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        })();
+
+        // ---- Form logic ----
+        (function () {
+            // Add/remove WorkEx rows
+            var list = document.getElementById('workexList');
+            var addBtn = document.getElementById('addWorkEx');
+            function bindRemove(btn) {
+                btn.addEventListener('click', function () {
+                    var rows = list.querySelectorAll('.workex-item');
+                    if (rows.length <= 1) return; // keep at least one row
+                    btn.closest('.workex-item').remove();
+                });
+            }
+            list.querySelectorAll('.remove-workex').forEach(bindRemove);
+
+            addBtn.addEventListener('click', function () {
+                var first = list.querySelector('.workex-item');
+                var clone = first.cloneNode(true);
+                // Clear values in the clone
+                clone.querySelectorAll('input').forEach(function (i) { i.value = ''; });
+                // Re-bind remove button
+                bindRemove(clone.querySelector('.remove-workex'));
+                list.appendChild(clone);
+                lucide.createIcons();
+            });
+
+            // Location preference: keep three dropdowns distinct
+            // (no JS lock needed — user may pick the same city twice; that's allowed.)
+
+            // File upload: show file name & drag-and-drop styling
+            var drop = document.getElementById('fileDrop');
+            var input = document.getElementById('cvUpload');
+            var nameEl = document.getElementById('fileName');
+            input.addEventListener('change', function () {
+                if (input.files && input.files[0]) {
+                    var f = input.files[0];
+                    var sizeMb = (f.size / (1024 * 1024)).toFixed(2);
+                    nameEl.textContent = f.name + ' (' + sizeMb + ' MB)';
+                } else {
+                    nameEl.textContent = '';
+                }
+            });
+            ['dragover', 'dragenter'].forEach(function (ev) {
+                drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('dragover'); });
+            });
+            ['dragleave', 'drop'].forEach(function (ev) {
+                drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('dragover'); });
+            });
+            drop.addEventListener('drop', function (e) {
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                    input.files = e.dataTransfer.files;
+                    input.dispatchEvent(new Event('change'));
+                }
+            });
+
+            // Re-render lucide icons after the row template clone
+            lucide.createIcons();
+
+            // Submit handler — collect, validate, and (since this is a static site)
+            // package the data into a mailto: link. Replace with your real endpoint when ready.
+            var form = document.getElementById('talentForm');
+            var success = document.getElementById('formSuccess');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Browser-side required validation (HTML5)
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                // Collect work experience rows
+                var rows = list.querySelectorAll('.workex-item');
+                var workExLines = [];
+                rows.forEach(function (r) {
+                    var pos = r.querySelector('[name="workex_position[]"]').value.trim();
+                    var co  = r.querySelector('[name="workex_company[]"]').value.trim();
+                    var j   = r.querySelector('[name="workex_join[]"]').value.trim();
+                    var en  = r.querySelector('[name="workex_end[]"]').value.trim();
+                    if (pos || co || j || en) {
+                        workExLines.push('- ' + pos + ' at ' + co + ' (' + j + ' to ' + en + ')');
+                    }
+                });
+
+                var data = {
+                    firstName: form.firstName.value.trim(),
+                    lastName: form.lastName.value.trim(),
+                    mobile: form.mobile.value.trim(),
+                    email: form.email.value.trim(),
+                    address: form.address.value.trim(),
+                    qualification: form.qualification.value,
+                    university: form.university.value.trim(),
+                    totalWorkEx: form.totalWorkEx.value,
+                    noticePeriod: form.noticePeriod.value,
+                    currentCtc: form.currentCtc.value,
+                    location1: form.locationPref1.value,
+                    location2: form.locationPref2.value,
+                    location3: form.locationPref3.value,
+                    relocate: (form.querySelector('input[name="relocate"]:checked') || {}).value || ''
+                };
+
+                var body =
+                    'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
+                    'Mobile: ' + data.mobile + '\n' +
+                    'Email: ' + data.email + '\n' +
+                    'Permanent Address: ' + data.address + '\n\n' +
+                    'Highest Qualification: ' + data.qualification + '\n' +
+                    'University: ' + data.university + '\n\n' +
+                    'Total Work Experience: ' + data.totalWorkEx + ' months\n' +
+                    'Work Experience:\n' + (workExLines.length ? workExLines.join('\n') : '- (none)') + '\n\n' +
+                    'Notice Period: ' + data.noticePeriod + '\n' +
+                    'Current CTC: ' + data.currentCtc + ' LPA\n\n' +
+                    'Location Preferences:\n' +
+                    '  1. ' + (data.location1 || '-') + '\n' +
+                    '  2. ' + (data.location2 || '-') + '\n' +
+                    '  3. ' + (data.location3 || '-') + '\n\n' +
+                    'Ready to Relocate: ' + data.relocate + '\n';
+
+                // Try opening the user's mail client with a prefilled email.
+                // (Static-site fallback. Replace this block with a real POST to your
+                // backend / Formspree / Netlify Forms endpoint when one is available.)
+                var subject = encodeURIComponent('Talent Community Application — ' + data.firstName + ' ' + data.lastName);
+                var href = 'mailto:info@himerospharma.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+                window.location.href = href;
+
+                // Show success state
+                success.classList.add('show');
+                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                lucide.createIcons();
+            });
+        })();
+    </script>
+</body>
+
+</html>
