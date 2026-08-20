@@ -32,12 +32,12 @@
         .mobile-menu.open { transform:translateX(0); }
         .filter-btn { transition: all 0.3s ease; }
         .filter-btn.active { background-color: #1d4ed8; color: white; border-color: #1d4ed8; }
-        .gallery-card { transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: pointer; }
-        .gallery-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(37, 99, 235, 0.15); }
-        .gallery-card:hover .gallery-img { transform: scale(1.06); }
-        .gallery-img { transition: transform 0.5s ease; }
-        .image-overlay { opacity: 0; transition: opacity 0.3s ease; }
-        .gallery-card:hover .image-overlay { opacity: 1; }
+        .segment-card { transition:all 0.4s ease; }
+        .segment-card:hover { transform:translateY(-8px); box-shadow:0 25px 50px rgba(37,99,235,0.15); }
+        .segment-card:hover .segment-img img { transform:scale(1.08); }
+        .segment-card .segment-img img { transition:transform 0.6s ease; }
+        .gallery-img { transition: transform 0.5s ease; cursor: pointer; }
+        .gallery-img:hover { transform: scale(1.03); }
         .page-transition-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
             pointer-events: none; background: #ffffff; opacity: 1;
@@ -113,966 +113,206 @@
     <section class="bg-gradient-to-br from-brand-900 via-brand-800 to-green-900 text-white py-16 lg:py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-500/20 via-transparent to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-4xl lg:text-5xl font-bold mb-3">Gallery</h1>
+            <div class="inline-flex items-center gap-3 mb-4 justify-center">
+                <div class="w-8 h-0.5 bg-green-400"></div>
+                <span class="text-xs font-bold text-green-300 uppercase tracking-widest">Photo Gallery</span>
+                <div class="w-8 h-0.5 bg-green-400"></div>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Gallery</h1>
             <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">Moments captured from conferences, events, and our journey in advancing healthcare.</p>
         </div>
     </section>
 
-    <!-- Filter Section -->
-    <section class="py-8 bg-white border-b border-gray-100 sticky top-16 lg:top-20 z-30">
+    <!-- Events Section -->
+    <section class="py-20 lg:py-28 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-wrap gap-2 justify-center" id="filterButtons">
-                <button class="filter-btn active px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="all">All Events</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="androcon">ANDROCON, Hyderabad</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="avatar">Avatar 2025, Delhi</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="dns">DNS Annual Conf, Delhi 2026</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="ezusicon">EZUSICON, Puri</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="inhouse">Inhouse</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="midsexcon">MIDSEXCON, Hyderabad</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="sexcon-goa">SEXCON, Goa</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="sexcon-hyd">SEXCON, Hyderabad</button>
-                <button class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded-full hover:border-brand-500 hover:text-brand-600" data-filter="sexcon-vij">SEXCON, Vijayawada</button>
+            <!-- Heading -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 mb-4 justify-center">
+                    <div class="w-8 h-0.5 bg-brand-600"></div>
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-widest">Our Events</span>
+                    <div class="w-8 h-0.5 bg-brand-600"></div>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Explore Our Events</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">Browse photos from our participation in conferences, summits, and in-house celebrations across the country.</p>
+            </div>
+
+            <!-- Event Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ANDROCON, Hyderabad -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="androcon">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/ANDROCON-Hyderabad/12.jpeg" alt="ANDROCON, Hyderabad" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="users" class="w-3.5 h-3.5"></i> 46 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">ANDROCON, Hyderabad</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-androcon.html" class="segment-btn inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Avatar 2025, Delhi -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="avatar">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/Avatar-2025-Delhi/10.jpeg" alt="Avatar 2025, Delhi" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="user-check" class="w-3.5 h-3.5"></i> 13 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Avatar 2025, Delhi</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-avatar.html" class="segment-btn inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- DNS Annual Conf, Delhi 2026 -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="dns">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/22.jpeg" alt="DNS Annual Conf, Delhi 2026" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i> 12 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">DNS Annual Conf, Delhi 2026</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-dns.html" class="segment-btn inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- EZUSICON, Puri -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="ezusicon">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.19.54_PM.jpeg" alt="EZUSICON, Puri" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> 18 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">EZUSICON, Puri</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-ezusicon.html" class="segment-btn inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Inhouse -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="inhouse">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/Inhouse/25.jpeg" alt="Inhouse" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="building" class="w-3.5 h-3.5"></i> 7 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Inhouse</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-inhouse.html" class="segment-btn inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- MIDSEXCON, Hyderabad -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="midsexcon">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01596.JPG" alt="MIDSEXCON, Hyderabad" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="mic" class="w-3.5 h-3.5"></i> 15 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">MIDSEXCON, Hyderabad</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-midsexcon.html" class="segment-btn inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- SEXCON, Goa -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="sexcon-goa">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/SEXCON-Goa/30.jpeg" alt="SEXCON, Goa" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 9 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SEXCON, Goa</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-sexcon-goa.html" class="segment-btn inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- SEXCON, Hyderabad -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="sexcon-hyd">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/SEXCON-Hyderabad/14.jpeg" alt="SEXCON, Hyderabad" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="calendar-days" class="w-3.5 h-3.5"></i> 11 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SEXCON, Hyderabad</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-sexcon-hyderabad.html" class="segment-btn inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- SEXCON, Vijayawada -->
+                <div class="segment-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" data-segment="sexcon-vij">
+                    <div class="segment-img relative h-72 overflow-hidden">
+                        <img src="Gallery/SEXCON-Vijayawada/2.jpeg" alt="SEXCON, Vijayawada" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-white/40 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-800 uppercase tracking-wider">
+                                <i data-lucide="calendar-clock" class="w-3.5 h-3.5"></i> 5 Photos
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SEXCON, Vijayawada</h3>
+                        <p class="text-sm text-gray-500 mb-6">Moments and memories from the event.</p>
+                        <a href="event-sexcon-vijayawada.html" class="segment-btn inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 self-start">
+                            View Photos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Gallery Section -->
-    <section class="py-16 lg:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-
-            <!-- ANDROCON, Hyderabad -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="androcon">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">ANDROCON, Hyderabad</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">46 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(0)">
-                        <img src="Gallery/ANDROCON-Hyderabad/12.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(1)">
-                        <img src="Gallery/ANDROCON-Hyderabad/IMG-20260503-WA0015.jpg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(2)">
-                        <img src="Gallery/ANDROCON-Hyderabad/IMG-20260503-WA0084.jpg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(3)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.21_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(4)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.23_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(5)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.23_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(6)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.24_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(7)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.25_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(8)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.26_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(9)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.27_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(10)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.34_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(11)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.34_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(12)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.35_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(13)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.35_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(14)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.35_AM_-2.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(15)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.36_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(16)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.36_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(17)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.36_AM_-2.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(18)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.37_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(19)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.37_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(20)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.38_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(21)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.38_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(22)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.40_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(23)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.40_AM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(24)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.41_AM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(25)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.10.41_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(26)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.26_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(27)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.27_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(28)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.28_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(29)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.28_PM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(30)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.33_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(31)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.33_PM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(32)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.34_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(33)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.38_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(34)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.38_PM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(35)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.39_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(36)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.48_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(37)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.49_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(38)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.49_PM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(39)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.50_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(40)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.52_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(41)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.54_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(42)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.57_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(43)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.57_PM_-1.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(44)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.58_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(45)">
-                        <img src="Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.59_PM.jpeg" alt="ANDROCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">ANDROCON, Hyderabad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Avatar 2025, Delhi -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="avatar">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Avatar 2025, Delhi</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">13 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(46)">
-                        <img src="Gallery/Avatar-2025-Delhi/10.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(47)">
-                        <img src="Gallery/Avatar-2025-Delhi/40.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(48)">
-                        <img src="Gallery/Avatar-2025-Delhi/41.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(49)">
-                        <img src="Gallery/Avatar-2025-Delhi/42.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(50)">
-                        <img src="Gallery/Avatar-2025-Delhi/43.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(51)">
-                        <img src="Gallery/Avatar-2025-Delhi/44.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(52)">
-                        <img src="Gallery/Avatar-2025-Delhi/45.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(53)">
-                        <img src="Gallery/Avatar-2025-Delhi/46.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(54)">
-                        <img src="Gallery/Avatar-2025-Delhi/8.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(55)">
-                        <img src="Gallery/Avatar-2025-Delhi/9.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(56)">
-                        <img src="Gallery/Avatar-2025-Delhi/WhatsApp_Image_2026-08-19_at_1.13.33_PM.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(57)">
-                        <img src="Gallery/Avatar-2025-Delhi/WhatsApp_Image_2026-08-19_at_1.13.35_PM.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(58)">
-                        <img src="Gallery/Avatar-2025-Delhi/WhatsApp_Image_2026-08-19_at_1.13.46_PM.jpeg" alt="Avatar 2025, Delhi" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Avatar 2025, Delhi</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DNS Annual Conf, Delhi 2026 -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="dns">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">DNS Annual Conf, Delhi 2026</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">12 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(59)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/22.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(60)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/23.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(61)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/24.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(62)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/47.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(63)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/48.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(64)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/49.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(65)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/50.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(66)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/51.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(67)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/52.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(68)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/53.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(69)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/54.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(70)">
-                        <img src="Gallery/DNS-Annual-Conf-Delhi-2026/WhatsApp_Image_2026-08-20_at_11.27.12_AM.jpeg" alt="DNS Annual Conf, Delhi 2026" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">DNS Annual Conf, Delhi 2026</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EZUSICON, Puri -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="ezusicon">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">EZUSICON, Puri</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">18 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(71)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.19.54_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(72)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.20.32_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(73)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.21.18_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(74)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.21.43_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(75)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.22.15_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(76)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.22.39_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(77)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.23.11_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(78)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.23.29_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(79)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.23.51_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(80)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.24.17_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(81)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.24.39_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(82)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.24.57_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(83)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.25.16_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(84)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.25.36_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(85)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.25.56_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(86)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.26.20_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(87)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.26.48_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(88)">
-                        <img src="Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.27.10_PM.jpeg" alt="EZUSICON, Puri" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">EZUSICON, Puri</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Inhouse -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="inhouse">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Inhouse</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">7 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(89)">
-                        <img src="Gallery/Inhouse/25.jpeg" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(90)">
-                        <img src="Gallery/Inhouse/26.jpeg" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(91)">
-                        <img src="Gallery/Inhouse/27.jpeg" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(92)">
-                        <img src="Gallery/Inhouse/28.jpeg" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(93)">
-                        <img src="Gallery/Inhouse/29.jpeg" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(94)">
-                        <img src="Gallery/Inhouse/Gemini_Generated_Image_umjbngumjbngumjb.png" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(95)">
-                        <img src="Gallery/Inhouse/Our_Tribute_to_The_Father_of_Sexology,_Hon’ble_Dr_Mahendra_Vatsa.png" alt="Inhouse" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">Inhouse</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MIDSEXCON, Hyderabad -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="midsexcon">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">MIDSEXCON, Hyderabad</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">15 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(96)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01596.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(97)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01650.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(98)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01761.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(99)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01778.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(100)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01783.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(101)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01789.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(102)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01835.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(103)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01848.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(104)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01907.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(105)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC01935.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(106)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC02023.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(107)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC02073.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(108)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/DSC02090.JPG" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(109)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.36.14_PM.jpeg" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(110)">
-                        <img src="Gallery/MIDSEXCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.36.21_PM.jpeg" alt="MIDSEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">MIDSEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEXCON, Goa -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="sexcon-goa">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">SEXCON, Goa</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">9 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(111)">
-                        <img src="Gallery/SEXCON-Goa/30.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(112)">
-                        <img src="Gallery/SEXCON-Goa/31.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(113)">
-                        <img src="Gallery/SEXCON-Goa/33.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(114)">
-                        <img src="Gallery/SEXCON-Goa/34.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(115)">
-                        <img src="Gallery/SEXCON-Goa/35.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(116)">
-                        <img src="Gallery/SEXCON-Goa/36.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(117)">
-                        <img src="Gallery/SEXCON-Goa/37.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(118)">
-                        <img src="Gallery/SEXCON-Goa/38.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(119)">
-                        <img src="Gallery/SEXCON-Goa/39.jpeg" alt="SEXCON, Goa" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Goa</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEXCON, Hyderabad -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="sexcon-hyd">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">SEXCON, Hyderabad</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">11 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(120)">
-                        <img src="Gallery/SEXCON-Hyderabad/14.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(121)">
-                        <img src="Gallery/SEXCON-Hyderabad/15.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(122)">
-                        <img src="Gallery/SEXCON-Hyderabad/16.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(123)">
-                        <img src="Gallery/SEXCON-Hyderabad/17.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(124)">
-                        <img src="Gallery/SEXCON-Hyderabad/2.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(125)">
-                        <img src="Gallery/SEXCON-Hyderabad/3.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(126)">
-                        <img src="Gallery/SEXCON-Hyderabad/5.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(127)">
-                        <img src="Gallery/SEXCON-Hyderabad/7.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(128)">
-                        <img src="Gallery/SEXCON-Hyderabad/WhatsApp_Image_2026-08-19_at_1.14.02_PM.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(129)">
-                        <img src="Gallery/SEXCON-Hyderabad/WhatsApp_Image_2026-08-19_at_12.28.52_PM.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(130)">
-                        <img src="Gallery/SEXCON-Hyderabad/WhatsApp_Image_2026-08-19_at_12.28.53_PM.jpeg" alt="SEXCON, Hyderabad" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Hyderabad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEXCON, Vijayawada -->
-            <div class="gallery-segment mb-16 fade-in-section" data-segment="sexcon-vij">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-8 bg-gradient-to-b from-brand-600 to-green-500 rounded-full"></div>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">SEXCON, Vijayawada</h2>
-                    <span class="ml-auto text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">5 photos</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(131)">
-                        <img src="Gallery/SEXCON-Vijayawada/2.jpeg" alt="SEXCON, Vijayawada" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Vijayawada</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(132)">
-                        <img src="Gallery/SEXCON-Vijayawada/3.jpeg" alt="SEXCON, Vijayawada" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Vijayawada</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(133)">
-                        <img src="Gallery/SEXCON-Vijayawada/WhatsApp_Image_2026-08-19_at_12.27.51_PM.jpeg" alt="SEXCON, Vijayawada" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Vijayawada</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(134)">
-                        <img src="Gallery/SEXCON-Vijayawada/WhatsApp_Image_2026-08-19_at_12.27.57_PM.jpeg" alt="SEXCON, Vijayawada" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Vijayawada</span>
-                        </div>
-                    </div>
-                    <div class="gallery-card relative overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100" onclick="openLightbox(135)">
-                        <img src="Gallery/SEXCON-Vijayawada/WhatsApp_Image_2026-08-19_at_12.29.28_PM.jpeg" alt="SEXCON, Vijayawada" class="gallery-img w-full h-48 object-cover" loading="lazy">
-                        <div class="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                            <span class="text-white text-xs font-medium">SEXCON, Vijayawada</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="fixed inset-0 bg-black/95 z-[60] hidden items-center justify-center" onclick="closeLightboxOnBackdrop(event)">
-        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/80 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors z-10">
-            <i data-lucide="x" class="w-7 h-7"></i>
-        </button>
-        <button onclick="prevImage()" class="lightbox-nav-btn absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-3 rounded-full bg-white/10 z-10">
-            <i data-lucide="chevron-left" class="w-8 h-8"></i>
-        </button>
-        <button onclick="nextImage()" class="lightbox-nav-btn absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-3 rounded-full bg-white/10 z-10">
-            <i data-lucide="chevron-right" class="w-8 h-8"></i>
-        </button>
-        <img id="lightboxImg" src="" alt="" class="lightbox-content rounded-lg shadow-2xl">
-        <div id="lightboxCaption" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm bg-black/60 px-4 py-2 rounded-full backdrop-blur-sm"></div>
-        <div id="lightboxCounter" class="absolute top-4 left-4 text-white/80 text-sm bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm"></div>
-    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
@@ -1124,222 +364,11 @@
             else navbar.classList.remove('shadow-md');
         });
 
-        // Gallery Lightbox
-        const lightboxModal = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const lightboxCounter = document.getElementById('lightboxCounter');
-
-        const imageData = [
-            { src: "Gallery/ANDROCON-Hyderabad/12.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/IMG-20260503-WA0015.jpg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/IMG-20260503-WA0084.jpg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.21_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.23_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.23_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.24_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.25_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.26_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.27_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.34_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.34_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.35_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.35_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.35_AM_-2.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.36_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.36_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.36_AM_-2.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.37_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.37_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.38_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.38_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.40_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.40_AM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_11.34.41_AM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.10.41_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.26_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.27_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.28_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.28_PM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.33_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.33_PM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.34_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.38_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.38_PM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.39_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.48_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.49_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.49_PM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.50_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.52_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.54_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.57_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.57_PM_-1.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.58_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/ANDROCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.24.59_PM.jpeg", caption: "ANDROCON, Hyderabad" },
-            { src: "Gallery/Avatar-2025-Delhi/10.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/40.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/41.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/42.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/43.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/44.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/45.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/46.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/8.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/9.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/WhatsApp_Image_2026-08-19_at_1.13.33_PM.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/WhatsApp_Image_2026-08-19_at_1.13.35_PM.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/Avatar-2025-Delhi/WhatsApp_Image_2026-08-19_at_1.13.46_PM.jpeg", caption: "Avatar 2025, Delhi" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/22.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/23.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/24.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/47.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/48.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/49.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/50.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/51.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/52.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/53.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/54.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/DNS-Annual-Conf-Delhi-2026/WhatsApp_Image_2026-08-20_at_11.27.12_AM.jpeg", caption: "DNS Annual Conf, Delhi 2026" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.19.54_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.20.32_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.21.18_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.21.43_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.22.15_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.22.39_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.23.11_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.23.29_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.23.51_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.24.17_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.24.39_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.24.57_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.25.16_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.25.36_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.25.56_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.26.20_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.26.48_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/EZUSICON-Puri/WhatsApp_Image_2026-08-20_at_1.27.10_PM.jpeg", caption: "EZUSICON, Puri" },
-            { src: "Gallery/Inhouse/25.jpeg", caption: "Inhouse" },
-            { src: "Gallery/Inhouse/26.jpeg", caption: "Inhouse" },
-            { src: "Gallery/Inhouse/27.jpeg", caption: "Inhouse" },
-            { src: "Gallery/Inhouse/28.jpeg", caption: "Inhouse" },
-            { src: "Gallery/Inhouse/29.jpeg", caption: "Inhouse" },
-            { src: "Gallery/Inhouse/Gemini_Generated_Image_umjbngumjbngumjb.png", caption: "Inhouse" },
-            { src: "Gallery/Inhouse/Our_Tribute_to_The_Father_of_Sexology,_Hon’ble_Dr_Mahendra_Vatsa.png", caption: "Inhouse" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01596.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01650.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01761.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01778.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01783.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01789.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01835.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01848.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01907.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC01935.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC02023.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC02073.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/DSC02090.JPG", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.36.14_PM.jpeg", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/MIDSEXCON-Hyderabad/WhatsApp_Image_2026-08-20_at_12.36.21_PM.jpeg", caption: "MIDSEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Goa/30.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/31.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/33.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/34.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/35.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/36.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/37.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/38.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Goa/39.jpeg", caption: "SEXCON, Goa" },
-            { src: "Gallery/SEXCON-Hyderabad/14.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/15.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/16.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/17.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/2.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/3.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/5.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/7.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/WhatsApp_Image_2026-08-19_at_1.14.02_PM.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/WhatsApp_Image_2026-08-19_at_12.28.52_PM.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Hyderabad/WhatsApp_Image_2026-08-19_at_12.28.53_PM.jpeg", caption: "SEXCON, Hyderabad" },
-            { src: "Gallery/SEXCON-Vijayawada/2.jpeg", caption: "SEXCON, Vijayawada" },
-            { src: "Gallery/SEXCON-Vijayawada/3.jpeg", caption: "SEXCON, Vijayawada" },
-            { src: "Gallery/SEXCON-Vijayawada/WhatsApp_Image_2026-08-19_at_12.27.51_PM.jpeg", caption: "SEXCON, Vijayawada" },
-            { src: "Gallery/SEXCON-Vijayawada/WhatsApp_Image_2026-08-19_at_12.27.57_PM.jpeg", caption: "SEXCON, Vijayawada" },
-            { src: "Gallery/SEXCON-Vijayawada/WhatsApp_Image_2026-08-19_at_12.29.28_PM.jpeg", caption: "SEXCON, Vijayawada" },
-        ];
-
-        let currentIndex = 0;
-
-        function openLightbox(index) {
-            currentIndex = index;
-            updateLightbox();
-            lightboxModal.classList.remove('hidden');
-            lightboxModal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightboxModal.classList.add('hidden');
-            lightboxModal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
-
-        function closeLightboxOnBackdrop(event) {
-            if (event.target === lightboxModal) closeLightbox();
-        }
-
-        function updateLightbox() {
-            const img = imageData[currentIndex];
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.caption;
-            lightboxCaption.textContent = img.caption;
-            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + imageData.length;
-        }
-
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % imageData.length;
-            updateLightbox();
-        }
-
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + imageData.length) % imageData.length;
-            updateLightbox();
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (lightboxModal.classList.contains('hidden')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowLeft') prevImage();
-        });
-
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const segments = document.querySelectorAll('.gallery-segment');
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                segments.forEach(seg => {
-                    if (filter === 'all' || seg.dataset.segment === filter) {
-                        seg.style.display = '';
-                    } else {
-                        seg.style.display = 'none';
-                    }
-                });
-            });
-        });
-
         // Fade-in on scroll
         const fadeSections = document.querySelectorAll('.fade-in-section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
         fadeSections.forEach(sec => observer.observe(sec));
